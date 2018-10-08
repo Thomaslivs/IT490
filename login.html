@@ -28,16 +28,21 @@
 </head>
 <body> 
 <fieldset id="field"><legend align="left">Login</legend>
-	<form action="RMQClient.php">
+	<form action="RMQClient.php" method="post">
 		<label for="user" > Username</label>
-		<input id="user" type="text" name="user" autocomplete="off" placeholder = "Username"><br><br>
+		<input id="user" type="text" name="user" autocomplete="off" placeholder = "Username" Required><br><br>
 		<label for="user">Password</label>
-		<input id="pass" type="password" name="pass" autocomplete="off" placeholder = "Password"><br><br>
+		<input id="pass" type="password" name="pass" autocomplete="off" placeholder = "Password" Required><br><br>
 		
 		<div class="wrapper">
-			<input type="submit" value = "submit">
+			<input type="submit" id = "LoginSubmit" value = "submit">
 		</div>
 		<br>
 	</form>
+	<form action ="signup.html">
+		<div class="wrapper">
+			<p> If you do not have a login please click the sign up button and sign up</p>
+			<input type="submit" value = "Sign Up" placeholder = "Sign Up">
+		</div>
 </fieldset>
 </body>
