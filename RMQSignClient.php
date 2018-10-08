@@ -3,12 +3,13 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 session_start();
-if (isset($_){
-	$_SESSION['username'] = $_POST['signuser'];
-	$_SESSION['password'] = $_POST['signpass'];
-	$_SESSION['reddituser'] = $_POST['reddituser'];
-	$_SESSION['redditpass'] = $_POST['redditpass'];
-}
+
+//if (isset($_){
+//	$_SESSION['username'] = $_POST['signuser'];
+//	$_SESSION['password'] = $_POST['signpass'];
+//	$_SESSION['reddituser'] = $_POST['reddituser'];
+//	$_SESSION['redditpass'] = $_POST['redditpass'];
+//}
 
 $client = new rabbitMQClient("RabbitMQsignup.ini","testServer");
 $request2 = array();
