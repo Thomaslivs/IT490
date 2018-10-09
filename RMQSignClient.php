@@ -3,21 +3,20 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 session_start();
-
-//if (isset($_){
-//	$_SESSION['username'] = $_POST['signuser'];
-//	$_SESSION['password'] = $_POST['signpass'];
-//	$_SESSION['reddituser'] = $_POST['reddituser'];
-//	$_SESSION['redditpass'] = $_POST['redditpass'];
-//}
+/*if (isset($_POST){
+	$_SESSION['username'] = $_POST['signuser'];
+	$_SESSION['password'] = $_POST['signpass'];
+	$_SESSION['reddituser'] = $_POST['reddituser'];
+	$_SESSION['redditpass'] = $_POST['redditpass'];
+}*/
 
 $client = new rabbitMQClient("RabbitMQsignup.ini","testServer");
 $request2 = array();
 $request2['type'] = "register";
-$request2['username'] = $_SESSION['signuser'];
-$request2['password'] = $_SESSION['signpass'];
-$request2['reddituser'] = $_SESSION['reddituser'];
-$request2['redditpass'] = $_SESSION['redditpass'];
+$request2['username'] = $_POST['signuser'];
+$request2['password'] = $_POST['signpass'];
+$request2['reddituser'] = $_POST['reddituser'];
+$request2['redditpass'] = $_POST['redditpass'];
 $request2['message'] = $msg;
 $response2 = $client->send_request($request2);
 //$response = $client->publish($request);
