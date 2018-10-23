@@ -26,6 +26,29 @@
 				}
 	</style>
 </head>
+<script>
+function loginsend(){
+// Create our XMLHttpRequest object
+var send = new XMLHttpRequest();
+// Create some variables we need to send to our PHP file
+var url = "RMQClient.php";
+var user = document.getElementById("user").value;
+var pass = document.getElementById("pass").value;
+var vars = "user="+user+"&pass="+pass;
+send.open("POST", url, true);
+send.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+// Access the onreadystatechange event for the XMLHttpRequest object
+send.onreadystatechange = function() {
+    if(send.readyState == 4 && send.status == 200) {
+        var return_data = send.responseText;
+        document.getElementById("output").innerHTML = return_data;
+    }
+}
+// Send the data to PHP now... and wait for response to update the status div
+send.send(vars); // Actually execute the request
+document.getElementById("output").innerHTML = "processing...";
+}
+</script>
 <body> 
 <fieldset id="field"><legend align="left">Login</legend>
 	<form action="RMQClient.php" method="post">
@@ -35,7 +58,7 @@
 		<input id="pass" type="password" name="pass" autocomplete="off" placeholder = "Password" Required><br><br>
 		
 		<div class="wrapper">
-			<input type="submit" name="Submit" id = "LoginSubmit" value = "submit">
+			<input type="submit" name="Submit" id = "LoginSubmit" value = "submit" onclick = "loginsend();">
 		</div>
 		<br>
 	</form>
@@ -46,4 +69,6 @@
 		</div>
 	</form>
 </fieldset>
+<div id = "output" >
+</div>
 </body>
