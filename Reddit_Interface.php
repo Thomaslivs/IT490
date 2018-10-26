@@ -38,13 +38,25 @@ ul {
     			height:38px;
 			}
 </style>
+</head>
+<?php 
+session_start();
+if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
+
+}
+else{
+header('location: login.html');
+}
+?>
 <body>
 <div id = "nav">
 <ul>
   <li><a href="/homepage.php">Home</a></li>
   <li><a href="/Reddit_Interface.php">Reddit Interface</a></li>
+  <li><a href="/user.php">User</a></li>
   <li><a href="/setting.php">Setting</a></li>
   <li><a href="/logout.php">Log Out</a></li>
 </ul>
 </div>
+<p>Place holder for the Reddit Interface</p>
 </body>

@@ -53,16 +53,26 @@ li a:hover {
 }
 	</style>
 </head>
+<?php 
+session_start();
+if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
+
+}
+else{
+header('location: login.html');
+}
+?>
 <body>
 <div id = "nav">
 <ul>
   <li><a href="/homepage.php">Home</a></li>
   <li><a href="/Reddit_Interface.php">Reddit Interface</a></li>
+  <li><a href="/user.php">User</a></li>
   <li><a href="/setting.php">Setting</a></li>
   <li><a href="/logout.php">Log Out</a></li>
 </ul>
 </div>
-<font size= "7" >WELCOME<br></font>
+<font size= "7" ><?php echo "WELCOME, " .$_SESSION["username"];?> <br></font>
 <div id = "Message">
 <center><font size= "5"> This is the homepage for Null Breaker's Reddit Social Media Aggregator.</font></center>
 </div>
