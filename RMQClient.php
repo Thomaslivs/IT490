@@ -3,8 +3,19 @@
 require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
+function redirect ($message, $targetfile, $delay){ 
+echo "<br>$message<br>"; 
+header( "refresh:$delay; url=".$targetfile ); 
+exit(); } 
+function gatekeeper(){ 
+if ( !(isset($_SESSION["username"])) ) 
+{ 
+redirect ("Access denied, redirecting ...", "login.html", "5"); 
+} 
+}
 $client = new rabbitMQClient("RabbitMQ.ini","testServer");
 session_start();
+$_SESSION['username'] = $_POST['user'];
 if (isset($argv[1]))
 {
   $msg = $argv[1];
@@ -36,10 +47,16 @@ fclose($file);
 echo $argv[0]." END".PHP_EOL;
 if ($response == $_POST['user'])
 {
-	header('Location: homepage.php') ;
+	if ( !(isset($_SESSION["username"])) ) {
+
+	gatekeeper();
+}
+else{
+	redirect("hello","/homepage.php","0") ;
+}
 }
 else
 {
-	header('Location: failed.php');
+	redirect("Bye","/failed.php","0");
 }
 ?>
