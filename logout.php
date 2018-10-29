@@ -1,3 +1,45 @@
+<html>
+<style>
+	html {
+		background-image: url("IT490_V4.png");
+		background-repeat: no-repeat;
+		background-color: yellow;
+		}
+ul {
+    			list-style-type: none;
+   			margin: 0px;
+    			padding: 0;
+    			overflow: hidden;
+    			background-color: #959595;
+    			position: -webkit-sticky;
+			position: sticky;
+			top: 0;
+			width:100%;
+		}
+
+		li {
+    			float: left;
+
+		}
+
+		li a {
+    			display: block;
+    			color: black;
+    			text-align: center;
+    			padding: 14px 16px;
+    			text-decoration: none;
+			}
+		.nav {
+   			list-style: none;
+    			font-weight: bold;
+    			margin-bottom: 10px;
+    			width: 100%;
+    			text-align: center;
+    			background-color: #959595;
+    			height:38px;
+			}
+</style>
+</html>
 <?php
 // Initialize the session.
 // If you are using session_name("something"), don't forget it now!

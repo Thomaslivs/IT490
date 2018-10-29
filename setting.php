@@ -60,7 +60,7 @@ $user = $_SESSION["username"];
 </ul>
 </div>
 <font size= "7" ><p><?php echo "Settings for: ". $user; ?></p></font>
-<fieldset id="field"><legend align="left">Change Password</legend>
+<!--<fieldset id="field"><legend align="left">Change Password</legend>
 	<form action="RMQClient.php" method="post">
 		<p>Old Password</p><input id="ppassword" type="password" name="ppassword" autocomplete="off" placeholder = "Past Password" Required><br><br>
 		<p>New Password</p><input id="npassword" type="password" name="npassword" autocomplete="off" placeholder = "New Password" Required><br><br>		
@@ -69,5 +69,5 @@ $user = $_SESSION["username"];
 		</div>
 		<br>
 	</form>
-</fieldset>
+</fieldset>--->
 </body>
