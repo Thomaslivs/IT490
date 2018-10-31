@@ -37,13 +37,6 @@ $response = $client->send_request($request);
 echo "client received response: ".PHP_EOL;
 print_r($response);
 echo "\n\n";
-$file = fopen("log.txt","a");
-$ip=$_SERVER['REMOTE_ADDR'];
-$space = ' ';
-$type = 'Login';
-$data = $ip .$space. $_POST['user'] .$space. date('Y-m-d H:i:s'). $space. $type. PHP_EOL;
-echo fwrite($file,$data);
-fclose($file);
 echo $argv[0]." END".PHP_EOL;
 if ($response == $_POST['user'])
 {
@@ -52,11 +45,26 @@ if ($response == $_POST['user'])
 	gatekeeper();
 }
 else{
+	$file = fopen("log.txt","a");
+	$ip=$_SERVER['REMOTE_ADDR'];
+	$space = ' ';
+	$type = 'Login';
+	$data = $ip .$space. $_POST['user'] .$space. date('Y-m-d H:i:s'). $space. $type. PHP_EOL;
+	echo fwrite($file,$data);
+	fclose($file);
 	redirect("hello","/homepage.php","0") ;
 }
 }
 else
 {
+	$file2 = fopen("log.txt","a");
+	$ip2=$_SERVER['REMOTE_ADDR'];
+	$space = ' ';
+	$type2 = 'Failed Login';
+	$data2 = $ip2 .$space. $_POST['user'] .$space. date('Y-m-d H:i:s'). $space. $type2. PHP_EOL;
+	echo fwrite($file2,$data2);
+	fclose($file2);	
 	redirect("Bye","/failed.php","0");
+
 }
 ?>
