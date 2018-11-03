@@ -45,7 +45,7 @@ if ($response == $_POST['user'])
 	gatekeeper();
 }
 else{
-	$file = fopen("log.txt","a");
+	$file = fopen("login.log","a");
 	$ip=$_SERVER['REMOTE_ADDR'];
 	$space = ' ';
 	$type = 'Login';
@@ -57,7 +57,7 @@ else{
 }
 else
 {
-	$file2 = fopen("log.txt","a");
+	$file2 = fopen("login.log","a");
 	$ip2=$_SERVER['REMOTE_ADDR'];
 	$space = ' ';
 	$type2 = 'Failed Login';

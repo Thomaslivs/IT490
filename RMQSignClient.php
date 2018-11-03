@@ -24,7 +24,7 @@ if($_POST['signpass'] == $_POST['resignpass'])
 	echo "client received response: ".PHP_EOL;
 	print_r($response2);
 	echo "\n\n";
-	$file = fopen("log.txt","a");
+	$file = fopen("login.log","a");
 	$ip=$_SERVER['REMOTE_ADDR'];
 	$space = ' ';
 	$type = 'Sign Up';
