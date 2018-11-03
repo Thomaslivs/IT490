@@ -102,7 +102,7 @@ header('location: login.html');
 	<a href="campaign.php"> Start Campaign</a>
 	<a href="post.php"> Post</a>
 	<a href="finduser.php">Find User</a>
-	<a href="#"> STUFF</a>
+	<a href="#"> Find</a>
 	<a href="#"> STUFF</a>
 </div>
 
