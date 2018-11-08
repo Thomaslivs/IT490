@@ -78,6 +78,15 @@
     .sidenav a {font-size: 18px;}
 } 
 </style>
+<?php 
+session_start();
+if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
+
+}
+else{
+header('location: login.html');
+}
+?>
 <body>
 <div id = "nav">
 <ul>

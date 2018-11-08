@@ -79,7 +79,7 @@
 } 
 </style>
 </head>
-<?php /*
+<?php 
 session_start();
 if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
 
@@ -87,7 +87,7 @@ if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
 else{
 header('location: login.html');
 }
-*/?>
+?>
 <body>
 <div id = "nav">
 <ul>
