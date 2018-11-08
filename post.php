@@ -78,6 +78,16 @@
     .sidenav a {font-size: 18px;}
 } 
 </style>
+</head>
+<?php /*
+session_start();
+if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
+
+}
+else{
+header('location: login.html');
+}
+*/?>
 <body>
 <div id = "nav">
 <ul>
@@ -90,41 +100,75 @@
 </div>
 <div class="sidenav">
 	<a href="campaign.php"> Start Campaign</a>
-	<a href="post.php"> Post</a>
+	<a href="post.php"> Comment</a>
+	<a href="key_threads.php"> Key Threads</a>
+	<a href="key_players.php"> Key Players</a>
 	<a href="finduser.php">Find User</a>
-	<a href="#"> STUFF</a>
-	<a href="#"> STUFF</a>
 </div>
-
+<script type = "text/javascript">
+function comment_topic(){
+	//debugger;
+	var xhr = new XMLHttpRequest();
+	var url = "RMQComment1.php";
+	var topic = document.getElementById("topic").value;
+	var data = "topic="+topic;
+	xhr.open("POST",url, true);
+	xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		xhr.onreadystatechange = function () {
+		if(this.readyState == 4 && this.status == 200){
+			response = this.responseText;
+			endresult = JSON.parse(response);
+			for (var i=0; i < endresult.length; i++)
+			{
+			var br = document.createElement('br');//create link
+			document.getElementById("output1").appendChild(br);
+			document.getElementById("output1").innerHTML += endresult[i];//add to body
+			}
+		}
+};
+	xhr.send(data);
+	
+}
+function comment_post(){
+	//debugger;
+	var xhr = new XMLHttpRequest();
+	var url = "RMQComment2.php";
+	var ID = document.getElementById("id").value;
+	var comment = document.getElementById("comment").value;
+	var data = "ID="+ID+"&comment="+comment;
+	xhr.open("POST",url, true);
+	xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		xhr.onreadystatechange = function () {
+		if(this.readyState == 4 && this.status == 200){
+			response = this.responseText;
+			endresult = JSON.parse(response);
+			document.getElementById("output2").innerHTML = "Comment Made: " + comment;
+		}
+};
+	xhr.send(data);
+	
+}
+</script>
 <div class = "main">
 
 </div>
 <center>
-<div>
-<?php
-$stuff = 'stuff';
-echo $stuff;
-?>
+<form>
+<label for="topic" > Enter a Topic</label><br>
+<input id="topic" type="text" name="topic" autocomplete="off" placeholder = "topic" Required><br><br>
+<button type = "button" onclick = 'comment_topic();'>Find Key Users</button>
+</form>
+<div id = "output1" style="width:800px;height:150px;line-height:3em;overflow:scroll;padding:5px;background-color: #FFFFFF;">
 </div>
-<script>
-    $(document).ready(function(){
-        function getData(){
-            $.ajax({
-                type: 'POST',
-                url: 'RMQUserInfoClient.php',
-                success: function(data){
-                    $('#output').html(data);
-                }
-            });
-        }
-        getData();
-        setInterval(function () {
-            getData(); 
-        }, 1000);  // it will refresh your data every 1 sec
-
-    });
-</script>
-<div class="container" id="output"></div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<form>
+<label for="id" > Enter a ID</label><br>
+<input id="id" type="text" name="id" autocomplete="off" placeholder = "ID" Required><br><br>
+<form>
+<label for="comment" > Enter a Comment</label><br>
+<textarea id="comment" type="text" name="comment" autocomplete="off" placeholder = "comment" Required></textarea><br><br>
+<button type = "button" onclick = 'comment_post();'>Find Key Users</button>
+</form>
+<div id = "output2">
+</div>
 </center>
 </body>

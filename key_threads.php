@@ -105,9 +105,61 @@ header('location: login.html');
 	<a href="key_players.php"> Key Players</a>
 	<a href="finduser.php">Find User</a>
 </div>
-
+<script type = "text/javascript">
+function key_threads(){
+	//debugger;
+	var xhr = new XMLHttpRequest();
+	var url = "RMQKey_threads.php";
+	var keyword = document.getElementById("keyword").value;
+	var limit = document.getElementById("limit").value;
+	var data = "keyword="+keyword+"&limit="+limit;
+	xhr.open("POST",url, true);
+	xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		xhr.onreadystatechange = function () {
+		if(this.readyState == 4 && this.status == 200){
+			response = this.responseText;
+			endresult = JSON.parse(response);
+			var bmlink = '<a href= "';
+			var emlink = '">';
+			var a = document.createElement('a');
+			for (var i=0; i < endresult.length; i++)
+			{
+			var link = document.createElement('a');//create link
+			var br = document.createElement('br');//create link
+			link.setAttribute('href', endresult[i]);//set href
+			link.innerHTML = 'Link#'+(i+1);//set text to be seen
+			document.getElementById("output").appendChild(br);
+			document.getElementById("output").appendChild(link);//add to body
+			}
+		}
+};
+	xhr.send(data);
+	
+}
+</script>
 <div class = "main">
 
 </div>
-<p>Place holder for the Reddit Interface</p>
+<center>
+<form>
+<label for="keyword" > Enter a Key Word</label><br>
+<input id="keyword" type="text" name="keyword" autocomplete="off" placeholder = "keyword" Required><br><br>
+<label for="limit"> Select a Number to limit the results:</label><br> 
+<select id = "limit">
+  <option value="5">5</option>
+  <option value="10">10</option>
+  <option value="15">15</option>
+  <option value="20">20</option>
+  <option value="25">25</option>
+  <option value="30">30</option>
+  <option value="35">35</option>
+  <option value="40">40</option>
+  <option value="45">45</option>
+  <option value="50">50</option>
+</select> <br>
+<button type = "button" onclick = 'key_threads();'>Find Key Threads</button>
+</form>
+<div id = "output" style="width:800px;height:150px;line-height:3em;overflow:scroll;padding:5px;background-color: #FFFFFF;">
+</div>
+</center>
 </body>

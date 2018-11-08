@@ -90,18 +90,54 @@
 </div>
 <div class="sidenav">
 	<a href="campaign.php"> Start Campaign</a>
-	<a href="post.php"> Post</a>
-	<a href="finduser.php"> Find User</a>
-	<a href="#"> STUFF</a>
-	<a href="#"> STUFF</a>
+	<a href="post.php"> Comment</a>
+	<a href="key_threads.php"> Key Threads</a>
+	<a href="key_players.php"> Key Players</a>
+	<a href="finduser.php">Find User</a>
 </div>
-
+<script type = "text/javascript">
+function start_campaign(){
+	//debugger;
+	var xhr = new XMLHttpRequest();
+	var url = "RMQCampaign.php";
+	var subredditname = document.getElementById("subredditname").value;
+	var title = document.getElementById("title").value;
+	var post = document.getElementById("post").value;
+	var delay = document.getElementById("delay").value;
+	var data = "subredditname="+subredditname+"&title="+title+"&post="+post+"&delay="+delay;
+	xhr.open("POST",url, true);
+	xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		xhr.onreadystatechange = function () {
+		if(this.readyState == 4 && this.status == 200){
+			response = this.responseText;
+			endresult = JSON.parse(response);
+			document.getElementById("output").innerHTML = "Campaign started"+" on "+subredditname+ " called " + title +" with post " +post +".";
+		}
+};
+	xhr.send(data);
+	
+}
+</script>
 <div class = "main">
 
 </div>
 <center>
-<?php
-echo "hello";
-?>
+<form>
+<label for="subredditname" > Enter a Sub-Reddit Name</label><br>
+<input id="subredditname" type="text" name="subredditname" autocomplete="off" placeholder = "Sub-Reddit Name" Required><br><br>
+<label for="title" > Enter a Title</label><br>
+<input id="title" type="text" name="title" autocomplete="off" placeholder = "Title" Required><br><br>
+<label for="post" > Enter a Post</label><br>
+<textarea id="post" type="text" name="post" autocomplete="off" placeholder = "Post" Required></textarea><br><br>
+<label for="delay" > Enter how long to delay the Post by</label><br>
+<input id="delay" type="number" name="delay" min = "0"max="9999" autocomplete="off" placeholder = "Enter delay(hour)" Required><br><br>
+<button type = "button" onclick = 'start_campaign();'>Start Campaign</button>
+</form>
+<font size = "4">
+<div style = "background-color: #FFFFFF">
+<div id = "output">
+</div>
+</div>
+</font>
 </center>
 </body>

@@ -90,41 +90,64 @@
 </div>
 <div class="sidenav">
 	<a href="campaign.php"> Start Campaign</a>
-	<a href="post.php"> Post</a>
+	<a href="post.php"> Comment</a>
+	<a href="key_threads.php"> Key Threads</a>
+	<a href="key_players.php"> Key Players</a>
 	<a href="finduser.php">Find User</a>
-	<a href="#"> STUFF</a>
-	<a href="#"> STUFF</a>
 </div>
 
 <div class = "main">
 
 </div>
 <script type = "text/javascript">
-/*function send_info(){
+function send_info(){
+	//debugger;
 	var xhr = new XMLHttpRequest();
-	var url = 'RMQUserInfoClient.php';
+	var url = "RMQUserInfoClient.php";
 	var user = document.getElementById("username").value;
-	var data = "user=" +user;
-	xhr.open('POST',url, true);
+	var data = "user="+user;
+	var response;
+	var endresult;
+	var txt = "";
+	//alert(data);
+	xhr.datatype = "json";
+	xhr.open("POST",url, true);
 	xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState == 4 && xhr.status == 200){
-			alert(xhr.responseText);
-			document.getElementById("output").innerHTML = xhr.responseText;
+	xhr.onreadystatechange = function () {
+		if(this.readyState == 4 && this.status == 200){
+			response = this.responseText;
+			endresult = JSON.parse(response);
+			//alert(Array.isArray(endresult));
+			//alert(endresult.length);
+			document.getElementById("output1").innerHTML = "UserName: "+ endresult[0];
+			document.getElementById("output2").innerHTML = "User ID: "+ endresult[1];
+			document.getElementById("output3").innerHTML = "Reddit creation date: "+ endresult[2];
+			document.getElementById("output4").innerHTML = "Verify Email: "+ endresult[3];
 		}
 	};
 	xhr.send(data);
+	xhr.timeout= 20000;
+	document.getElementById("output").innerHTML = "processing.....";
 }
-onclick = 'send_info();'
-*/</script>
+</script>
 <center>
 <div>
 </div>
-<form action = "RMQUserInfoClient.php" method = "POST">
+<form >
+<label for="username" > Enter a Username to find if the user exists</label><br>
 <input id="username" type="text" name="username" autocomplete="off" placeholder = "Username" Required><br><br>
-<button type = "submit" >Send Username</button>
+<button type = "button" onclick = 'send_info();'>Send Username</button>
+<p>If NULL, user does not exists</p>
 </form>
-<div id = "output">
+
+<font size = "7">
+<div style = "background-color: #FFFFFF">
+<div id = "output1"></div>
+<div id = "output2"></div>
+<div id = "output3"></div>
+<div id = "output4"></div>
 </div>
+</font>
+
 </center>
 </body>
