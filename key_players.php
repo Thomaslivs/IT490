@@ -42,44 +42,51 @@
 			}
  /* The sidebar menu */
 .sidenav {
-    width: 160px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 50; /* Stay on top */
-    top: 150; /* Stay at the top */
+    height: 50%;
+    width: 0%;
+    position: fixed;
+    z-index: 1;
+    top: 55;
     left: 0;
-    background-color: #959595; /* Black */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 20px;
+    background-color: #959595;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
-/* The navigation menu links */
 .sidenav a {
-    padding: 6px 8px 6px 16px;
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: black;
     display: block;
+    transition: 0.3s;
 }
 
-/* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
     color: #f1f1f1;
 }
 
-/* Style page content */
-.main {
-    margin-left: 160px; /* Same as the width of the sidebar */
-    padding: 0px 10px;
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 } 
 </style>
 </head>
-<?php 
+<?php/* 
 session_start();
 if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
 
@@ -87,8 +94,29 @@ if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
 else{
 header('location: login.html');
 }
-?>
+*/?>
 <body>
+<script>
+document.getElementById("main").addEventListener("click", toggleNav);
+
+function toggleNav(){
+    navSize = document.getElementById("sidenav").style.width;
+    if (navSize == '20%') {
+        return close();
+    }
+    return open();
+}
+function open() {
+	document.getElementById("sidenav").style.width = "20%";
+	document.getElementById("main").style.marginLeft= "20%";
+	document.getElementById("sidenav").style.backgroundColor = "#959595";
+}
+function close()
+{
+    document.getElementById("sidenav").style.width = "0%";
+    document.getElementById("main").style.marginLeft = "0%";
+}
+</script>
 <div id = "nav">
 <ul>
   <li><a href="/homepage.php">Home</a></li>
@@ -98,7 +126,10 @@ header('location: login.html');
   <li><a href="/logout.php">Log Out</a></li>
 </ul>
 </div>
-<div class="sidenav">
+<div id="main">
+  <span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
+</div>
+<div id = "sidenav" class="sidenav" style = "black">
 	<a href="campaign.php"> Start Campaign</a>
 	<a href="post.php"> Comment</a>
 	<a href="key_threads.php"> Key Threads</a>
@@ -106,6 +137,14 @@ header('location: login.html');
 	<a href="finduser.php">Find User</a>
 </div>
 <script type = "text/javascript">
+function hideplayers() {
+    var x = document.getElementById("players");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
 function key_users(){
 	//debugger;
 	var xhr = new XMLHttpRequest();
@@ -154,7 +193,10 @@ function key_users(){
 <button type = "button" onclick = 'key_users();'>Find Key Users</button>
 <p> Warning this may take a while</p>
 </form>
-<div id = "output" style="width:800px;height:150px;line-height:3em;overflow:scroll;padding:5px;background-color: #FFFFFF;">
+<button onclick="hideplayers()">Show Results</button>
+<div id = "players" style = "display: none">
+<div id = "output" style="width:70%;height:30%;line-height:3em;overflow:scroll;padding:5px;background-color: #FFFFFF;">
+</div>
 </div>
 </center>
 </body>

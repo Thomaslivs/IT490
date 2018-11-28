@@ -39,7 +39,7 @@ ul {
 			}
 </style>
 </head>
-<?php 
+<?php /*
 session_start();
 if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
 
@@ -48,7 +48,7 @@ else{
 header('location: login.html');
 }
 $user = $_SESSION["username"];
-?>
+*/?>
 <body>
 <div id = "nav">
 <ul>

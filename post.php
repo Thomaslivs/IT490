@@ -42,75 +42,103 @@
 			}
  /* The sidebar menu */
 .sidenav {
-    width: 160px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 50; /* Stay on top */
-    top: 150; /* Stay at the top */
+    height: 50%;
+    width: 0%;
+    position: fixed;
+    z-index: 1;
+    top: 55;
     left: 0;
-    background-color: #959595; /* Black */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 20px;
+    background-color: #959595;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
-/* The navigation menu links */
 .sidenav a {
-    padding: 6px 8px 6px 16px;
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: black;
     display: block;
+    transition: 0.3s;
 }
 
-/* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
     color: #f1f1f1;
 }
 
-/* Style page content */
-.main {
-    margin-left: 160px; /* Same as the width of the sidebar */
-    padding: 0px 10px;
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.selectboxit-container .selectboxit, .selectboxit-container .selectboxit-options {
+  width: 600px; /* Width of the dropdown button */
+  border-radius:0;
+  max-height:240px;
+}
+
+.selectboxit-options .selectboxit-option .selectboxit-option-anchor {
+    white-space: normal;
+    min-height: 30px;
+    height: auto;
 } 
 </style>
 </head>
-<?php 
-session_start();
-if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
-
-}
-else{
-header('location: login.html');
-}
-?>
-<body>
-<div id = "nav">
-<ul>
-  <li><a href="/homepage.php">Home</a></li>
-  <li><a href="/Reddit_Interface.php">Reddit Interface</a></li>
-  <li><a href="/user.php">User</a></li>
-  <li><a href="/setting.php">Setting</a></li>
-  <li><a href="/logout.php">Log Out</a></li>
-</ul>
-</div>
-<div class="sidenav">
-	<a href="campaign.php"> Start Campaign</a>
-	<a href="post.php"> Comment</a>
-	<a href="key_threads.php"> Key Threads</a>
-	<a href="key_players.php"> Key Players</a>
-	<a href="finduser.php">Find User</a>
-</div>
 <script type = "text/javascript">
+document.getElementById("main").addEventListener("click", toggleNav);
+
+function toggleNav(){
+    navSize = document.getElementById("sidenav").style.width;
+    if (navSize == '20%') {
+        return close();
+    }
+    return open();
+}
+function open() {
+	document.getElementById("sidenav").style.width = "20%";
+	document.getElementById("main").style.marginLeft= "20%";
+	document.getElementById("sidenav").style.backgroundColor = "#959595";
+}
+function close()
+{
+    document.getElementById("sidenav").style.width = "0%";
+    document.getElementById("main").style.marginLeft = "0%";
+}
+
+function hide() {
+    var x = document.getElementById("comment");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+function hidetopic() {
+    var x = document.getElementById("topic");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
 function comment_topic(){
 	//debugger;
 	var xhr = new XMLHttpRequest();
 	var url = "RMQComment1.php";
-	var topic = document.getElementById("topic").value;
+	var topic = document.getElementById("topic01").value;
 	var data = "topic="+topic;
 	xhr.open("POST",url, true);
 	xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
@@ -118,12 +146,16 @@ function comment_topic(){
 		if(this.readyState == 4 && this.status == 200){
 			response = this.responseText;
 			endresult = JSON.parse(response);
+			var selectoptions = "";
 			for (var i=0; i < endresult.length; i++)
 			{
 			var br = document.createElement('br');//create link
 			document.getElementById("output1").appendChild(br);
 			document.getElementById("output1").innerHTML += endresult[i];//add to body
+			postid = endresult[i].split(" ");
+			selectoptions += "<option value = " + postid[2] +">"+postid.join(' ') + "</option>";
 			}
+			document.getElementById("ids").innerHTML += selectoptions;
 		}
 };
 	xhr.send(data);
@@ -149,26 +181,63 @@ function comment_post(){
 	
 }
 </script>
-<div class = "main">
+<?php /*
+session_start();
+if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
 
+}
+else{
+header('location: login.html');
+}
+*/?>
+<body>
+<div id = "nav">
+<ul>
+  <li><a href="/homepage.php">Home</a></li>
+  <li><a href="/Reddit_Interface.php">Reddit Interface</a></li>
+  <li><a href="/user.php">User</a></li>
+  <li><a href="/setting.php">Setting</a></li>
+  <li><a href="/logout.php">Log Out</a></li>
+</ul>
+</div>
+<div id="main">
+  <span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
+</div>
+<div id = "sidenav" class="sidenav" style = "black">
+	<a href="campaign.php"> Start Campaign</a>
+	<a href="post.php"> Comment</a>
+	<a href="key_threads.php"> Key Threads</a>
+	<a href="key_players.php"> Key Players</a>
+	<a href="finduser.php">Find User</a>
 </div>
 <center>
+<a href = "findid.php"><p>How to find a topic ID yourself!</p><a>
+<button onclick="hidetopic()">Find Topic ID</button>
+<div id = "topic" style = "display: none">
 <form>
-<label for="topic" > Enter a Topic</label><br>
-<input id="topic" type="text" name="topic" autocomplete="off" placeholder = "topic" Required><br><br>
-<button type = "button" onclick = 'comment_topic();'>Find Key Users</button>
+<label for="topic01" > Enter a Topic</label><br>
+<input id="topic01" type="text" name="topic" autocomplete="off" placeholder = "topic" Required><br><br>
+<button type = "button" onclick = 'comment_topic();'>Find Topic Id</button>
 </form>
-<div id = "output1" style="width:800px;height:150px;line-height:3em;overflow:scroll;padding:5px;background-color: #FFFFFF;">
+<div id = "output1" style="width:800px;height:150px;line-height:1em;overflow:scroll;padding:5px;background-color: #FFFFFF;">
 </div>
+</div>
+<button onclick="hide()">Make Comment</button>
+<div id = "comment" style = "display: none">
 <form>
 <label for="id" > Enter a ID</label><br>
-<input id="id" type="text" name="id" autocomplete="off" placeholder = "ID" Required><br><br>
+<input type="text" list="ids" style="width: 50%; overflow:wrap;">
+<datalist id ="ids"/>
+</datalist>
+<div id = "fulltext">
+<div>
 <form>
 <label for="comment" > Enter a Comment</label><br>
-<textarea id="comment" type="text" name="comment" autocomplete="off" placeholder = "comment" Required></textarea><br><br>
-<button type = "button" onclick = 'comment_post();'>Find Key Users</button>
+<textarea id="comment" rows="10" cols="114" type="text" name="comment" autocomplete="off" placeholder = "comment" Required></textarea><br><br>
+<button type = "button" onclick = 'comment_post();'>Comment</button>
 </form>
 <div id = "output2">
+</div>
 </div>
 </center>
 </body>

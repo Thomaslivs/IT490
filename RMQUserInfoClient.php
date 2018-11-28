@@ -2,13 +2,13 @@
 require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
-session_start();
+/*session_start();
 if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
 
 }
 else{
 header('location: login.html');
-}
+}*/
 $client = new rabbitMQClient("RMQUserInfoClient.ini","testServer");
 $msg = "test message";
 $username = $_POST["user"];

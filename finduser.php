@@ -40,45 +40,52 @@
     			background-color: #959595;
     			height:38px;
 			}
- /* The sidebar menu */
+/* The sidebar menu */
 .sidenav {
-    width: 160px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 50; /* Stay on top */
-    top: 150; /* Stay at the top */
+    height: 50%;
+    width: 0%;
+    position: fixed;
+    z-index: 1;
+    top: 55;
     left: 0;
-    background-color: #959595; /* Black */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 20px;
+    background-color: #959595;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
-/* The navigation menu links */
 .sidenav a {
-    padding: 6px 8px 6px 16px;
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: black;
     display: block;
+    transition: 0.3s;
 }
 
-/* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
     color: #f1f1f1;
 }
 
-/* Style page content */
-.main {
-    margin-left: 160px; /* Same as the width of the sidebar */
-    padding: 0px 10px;
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
 }
 
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 } 
 </style>
-<?php 
+<?php/* 
 session_start();
 if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
 
@@ -86,8 +93,29 @@ if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
 else{
 header('location: login.html');
 }
-?>
+*/?>
 <body>
+<script>
+document.getElementById("main").addEventListener("click", toggleNav);
+
+function toggleNav(){
+    navSize = document.getElementById("sidenav").style.width;
+    if (navSize == '20%') {
+        return close();
+    }
+    return open();
+}
+function open() {
+	document.getElementById("sidenav").style.width = "20%";
+	document.getElementById("main").style.marginLeft= "20%";
+	document.getElementById("sidenav").style.backgroundColor = "#959595";
+}
+function close()
+{
+    document.getElementById("sidenav").style.width = "0%";
+    document.getElementById("main").style.marginLeft = "0%";
+}
+</script>
 <div id = "nav">
 <ul>
   <li><a href="/homepage.php">Home</a></li>
@@ -97,7 +125,10 @@ header('location: login.html');
   <li><a href="/logout.php">Log Out</a></li>
 </ul>
 </div>
-<div class="sidenav">
+<div id="main">
+  <span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
+</div>
+<div id = "sidenav" class="sidenav" style = "black">
 	<a href="campaign.php"> Start Campaign</a>
 	<a href="post.php"> Comment</a>
 	<a href="key_threads.php"> Key Threads</a>
@@ -126,8 +157,6 @@ function send_info(){
 		if(this.readyState == 4 && this.status == 200){
 			response = this.responseText;
 			endresult = JSON.parse(response);
-			//alert(Array.isArray(endresult));
-			//alert(endresult.length);
 			document.getElementById("output1").innerHTML = "UserName: "+ endresult[0];
 			document.getElementById("output2").innerHTML = "User ID: "+ endresult[1];
 			document.getElementById("output3").innerHTML = "Reddit creation date: "+ endresult[2];
@@ -148,9 +177,7 @@ function send_info(){
 <button type = "button" onclick = 'send_info();'>Send Username</button>
 <p>If NULL, user does not exists</p>
 </form>
-
-<font size = "7">
-<div style = "background-color: #FFFFFF">
+<div id = "result" style = "background-color: #FFFFFF">
 <div id = "output1"></div>
 <div id = "output2"></div>
 <div id = "output3"></div>
