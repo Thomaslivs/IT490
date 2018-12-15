@@ -1,45 +1,10 @@
 <html>
-<style>
-	html {
-		background-image: url("IT490_V4.png");
-		background-repeat: no-repeat;
-		background-color: yellow;
-		}
-ul {
-    			list-style-type: none;
-   			margin: 0px;
-    			padding: 0;
-    			overflow: hidden;
-    			background-color: #959595;
-    			position: -webkit-sticky;
-			position: sticky;
-			top: 0;
-			width:100%;
-		}
 
-		li {
-    			float: left;
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+</head>
 
-		}
-
-		li a {
-    			display: block;
-    			color: black;
-    			text-align: center;
-    			padding: 14px 16px;
-    			text-decoration: none;
-			}
-		.nav {
-   			list-style: none;
-    			font-weight: bold;
-    			margin-bottom: 10px;
-    			width: 100%;
-    			text-align: center;
-    			background-color: #959595;
-    			height:38px;
-			}
-</style>
-</html>
 <?php
 session_start();
 
@@ -67,19 +32,21 @@ header('Refresh:5;url = login.html');
 <p> Click <a href="login.html">here</a> if you are not redirected....</p>
 
 <script type="text/javascript">
-window.onload = function(){
-(function(){
-  var counter = 5;
-  setInterval(function() {
-    counter--;
-    if (counter >= 0) {
-      span = document.getElementById("count"); // to disply the element
-      span.innerHTML = counter;
-    }
-    if (counter === 0) { // at 0 counter is cleared
-        clearInterval(counter);
-    }
-  }, 1000); // counting in seconds
-})();
-}
+	window.onload = function () {
+		(function () {
+			var counter = 5;
+			setInterval(function () {
+				counter--;
+				if (counter >= 0) {
+					span = document.getElementById("count"); // to disply the element
+					span.innerHTML = counter;
+				}
+				if (counter === 0) { // at 0 counter is cleared
+					clearInterval(counter);
+				}
+			}, 1000); // counting in seconds
+		})();
+	}
 </script>
+
+</html>
