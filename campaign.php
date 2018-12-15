@@ -85,8 +85,10 @@
   .sidenav a {font-size: 18px;}
 } 
 </style>
-<?php/* 
+<?php 
 session_start();
+$user = $_SESSION["username"];
+/*
 if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
 
 }
@@ -140,21 +142,22 @@ function start_campaign(){
 	//debugger;
 	var xhr = new XMLHttpRequest();
 	var url = "RMQCampaign.php";
+	var user = "<?php echo $user; ?>";
 	var subredditname = document.getElementById("subredditname").value;
 	var title = document.getElementById("title").value;
 	var post = document.getElementById("post").value;
 	var delay = document.getElementById("delay").value;
-	var data = "subredditname="+subredditname+"&title="+title+"&post="+post+"&delay="+delay;
+	var data = "subredditname="+subredditname+"&title="+title+"&post="+post+"&delay="+delay+"&user="+user;
 	xhr.open("POST",url, true);
 	xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 		xhr.onreadystatechange = function () {
 		if(this.readyState == 4 && this.status == 200){
 			response = this.responseText;
 			endresult = JSON.parse(response);
-			document.getElementById("output").innerHTML = "Campaign started"+" on "+subredditname+ " called " + title +" with post " +post +".";
 		}
 };
 	xhr.send(data);
+	document.getElementById("output").innerHTML = "Campaign started"+" on "+subredditname+ " called " + title +" with post " +post +".";
 	
 }
 </script>
@@ -162,6 +165,7 @@ function start_campaign(){
 
 </div>
 <center>
+<fieldset id="field"><legend align="left">Start Campaign</legend>
 <form>
 <label for="subredditname" > Enter a Sub-Reddit Name</label><br>
 <input id="subredditname" type="text" name="subredditname" autocomplete="off" placeholder = "Sub-Reddit Name" Required><br><br>
@@ -173,11 +177,14 @@ function start_campaign(){
 <input id="delay" type="number" name="delay" min = "0"max="9999" autocomplete="off" placeholder = "Enter delay(hour)" Required><br><br>
 <button type = "button" onclick = 'start_campaign();'>Start Campaign</button>
 </form>
+</fieldset>
+<fieldset id="field"><legend align="left">Output</legend>
 <font size = "4">
 <div style = "background-color: #FFFFFF">
 <div id = "output">
 </div>
 </div>
 </font>
+</fieldset>
 </center>
 </body>

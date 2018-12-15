@@ -4,8 +4,7 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 function redirect ($message, $targetfile, $delay){ 
-echo "<br>$message<br>"; 
-header( "refresh:$delay; url=".$targetfile ); 
+header( 'Location:'.$targetfile ); 
 exit(); } 
 function gatekeeper(){ 
 if ( !(isset($_SESSION["username"])) ) 
@@ -34,7 +33,7 @@ $request['message'] = $msg;
 $response = $client->send_request($request);
 //$response = $client->publish($request);
 
-echo "client received response: ".PHP_EOL;
+#echo "client received response: ".PHP_EOL;
 print_r($response);
 echo "\n\n";
 echo $argv[0]." END".PHP_EOL;
@@ -52,7 +51,7 @@ else{
 	$data = $ip .$space. $_POST['user'] .$space. date('Y-m-d H:i:s'). $space. $type. PHP_EOL;
 	echo fwrite($file,$data);
 	fclose($file);
-	redirect("hello","/homepage.php","0") ;
+	redirect("","/homepage.php","0") ;
 }
 }
 else

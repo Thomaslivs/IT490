@@ -24,5 +24,18 @@ $request['post'] = $post;
 $request['hour'] = $delay;
 $request['message'] = $msg;
 $response = $client->send_request($request);
+
+$client2 = new rabbitMQClient("RMQCampaign2.ini","testServer");
+$user = $_POST['user'];
+$sub = $_POST['subredditname'];
+$request = array();
+$request['type'] = "table_campaign";
+$request['user'] = $user;
+$request['subreddit'] = $sub;
+$request['title'] = $title;
+$request['message'] = $msg;
+$response2 = $client2->send_request($request);
 echo $response;
+echo $response2;
+
 ?>

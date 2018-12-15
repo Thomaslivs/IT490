@@ -158,14 +158,21 @@ function key_users(){
 		if(this.readyState == 4 && this.status == 200){
 			response = this.responseText;
 			endresult = JSON.parse(response);
+			if (document.getElementById("output").innerHTML == "Loading...."){
+				document.getElementById("output").innerHTML = "";
 			for (var i=0; i < endresult.length; i++)
 			{
 			var br = document.createElement('br');//create link
 			document.getElementById("output").appendChild(br);
 			document.getElementById("output").innerHTML += endresult[i];//add to body
 			}
+			}
+			else{
+				document.getElementById("output").innerHTML = "Loading....";
+			}
 		}
 };
+	document.getElementById("output").innerHTML = "Loading....";
 	xhr.send(data);
 	
 }
@@ -173,6 +180,7 @@ function key_users(){
 <div class = "main">
 
 </div>
+<fieldset id="field"><legend align="left">Key Players</legend>
 <center>
 <form>
 <label for="keyword" > Enter a Key Word</label><br>
@@ -193,10 +201,13 @@ function key_users(){
 <button type = "button" onclick = 'key_users();'>Find Key Users</button>
 <p> Warning this may take a while</p>
 </form>
+</fieldset>
+<fieldset id="field"><legend align="left">Output</legend>
 <button onclick="hideplayers()">Show Results</button>
 <div id = "players" style = "display: none">
-<div id = "output" style="width:70%;height:30%;line-height:3em;overflow:scroll;padding:5px;background-color: #FFFFFF;">
+<div id = "output" style="width:70%;height:30%;line-height:1em;overflow:scroll;background-color: #FFFFFF;">
 </div>
 </div>
 </center>
+</fieldset>
 </body>

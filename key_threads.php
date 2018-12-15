@@ -147,6 +147,7 @@ function hidethreads() {
 }
 function key_threads(){
 	//debugger;
+	document.getElementById("output").innerHTML = "Loading.....";
 	var xhr = new XMLHttpRequest();
 	var url = "RMQKey_threads.php";
 	var keyword = document.getElementById("keyword").value;
@@ -161,9 +162,10 @@ function key_threads(){
 			var bmlink = '<a href= "';
 			var emlink = '">';
 			var a = document.createElement('a');
+			if (document.getElementById("output").innerHTML == "Loading....."){
+				document.getElementById("output").innerHTML = "";
 			document.getElementById("output").innerHTML += "New Search";
-			y = y + 1;
-			
+			document.getElementById("output").innerHTML += "\n";
 			for (var i=0; i < endresult.length; i++)
 			{
 			var link = document.createElement('a');//create link
@@ -176,6 +178,10 @@ function key_threads(){
 			document.getElementById("output").innerHTML += endresult[i];//add to body
 			document.getElementById("output").appendChild(br);
 			}
+			}
+			else{
+				document.getElementById("output").innerHTML == "Loading.....";
+			}
 			
 		}
 };
@@ -187,6 +193,7 @@ function key_threads(){
 
 </div>
 <center>
+<fieldset id="field"><legend align="left">Key Threads</legend>
 <form>
 <label for="keyword" > Enter a Key Word</label><br>
 <input id="keyword" type="text" name="keyword" autocomplete="off" placeholder = "keyword" Required><br><br>
@@ -205,9 +212,12 @@ function key_threads(){
 </select> <br>
 <button type = "button" onclick = 'key_threads();'>Find Key Threads</button>
 </form>
+</fieldset>
+<fieldset id="field"><legend align="left">Output</legend>
 <button onclick="hidethreads()">Show Results</button>
 <div id = "threads" style = "display: none">
 <div id = "output" style="width:800px;height:150px;line-height:1em;overflow:scroll;padding:5px;background-color: #FFFFFF;">
 </div>
 </center>
+</fieldset>
 </body>
