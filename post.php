@@ -155,7 +155,7 @@ function comment_topic(){
 			postid = endresult[i].split(" ");
 			selectoptions += "<option value = " + postid[2] +">"+postid.join(' ') + "</option>";
 			}
-			document.getElementById("ids").innerHTML += selectoptions;
+			document.getElementById("listofids").innerHTML += selectoptions;
 		}
 };
 	xhr.send(data);
@@ -165,8 +165,8 @@ function comment_post(){
 	//debugger;
 	var xhr = new XMLHttpRequest();
 	var url = "RMQComment2.php";
-	var ID = document.getElementById("id").value;
-	var comment = document.getElementById("comment").value;
+	var ID = document.getElementById("ids").value;
+	var comment = encodeURIComponent(document.getElementById("comment2").value);
 	var data = "ID="+ID+"&comment="+comment;
 	xhr.open("POST",url, true);
 	xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
@@ -174,7 +174,7 @@ function comment_post(){
 		if(this.readyState == 4 && this.status == 200){
 			response = this.responseText;
 			endresult = JSON.parse(response);
-			document.getElementById("output2").innerHTML = "Comment Made: " + comment;
+			document.getElementById("output2").innerHTML = "Comment Made: " + decodeURIComponent(comment) + data;
 		}
 };
 	xhr.send(data);
@@ -212,32 +212,40 @@ header('location: login.html');
 </div>
 <center>
 <a href = "findid.php"><p>How to find a topic ID yourself!</p><a>
+<fieldset id="field"><legend align="left">Topic ID</legend>
 <button onclick="hidetopic()">Find Topic ID</button>
 <div id = "topic" style = "display: none">
 <form>
 <label for="topic01" > Enter a Topic</label><br>
-<input id="topic01" type="text" name="topic" autocomplete="off" placeholder = "topic" Required><br><br>
+<input id="topic01" type="text" name="topic" autocomplete="off" placeholder = "topic"><br><br>
 <button type = "button" onclick = 'comment_topic();'>Find Topic Id</button>
 </form>
+<fieldset id="field"><legend align="left">Results</legend>
 <div id = "output1" style="width:800px;height:150px;line-height:1em;overflow:scroll;padding:5px;background-color: #FFFFFF;">
 </div>
 </div>
+</fieldset>
+</fieldset>
+<fieldset id="field"><legend align="left">Make Comment</legend>
 <button onclick="hide()">Make Comment</button>
 <div id = "comment" style = "display: none">
 <form>
-<label for="id" > Enter a ID</label><br>
-<input type="text" list="ids" style="width: 50%; overflow:wrap;">
-<datalist id ="ids"/>
+<label for="ids" > Enter a ID</label><br>
+<input id = "ids" list="listofids" style="width: 50%; overflow:wrap;">
+<datalist id ="listofids">
 </datalist>
 <div id = "fulltext">
 <div>
-<form>
-<label for="comment" > Enter a Comment</label><br>
-<textarea id="comment" rows="10" cols="114" type="text" name="comment" autocomplete="off" placeholder = "comment" Required></textarea><br><br>
+<label for="comment2" > Enter a Comment</label><br>
+<textarea id="comment2" rows="10" cols="114" type="text" name="comment" autocomplete="off" placeholder = "comment" ></textarea><br><br>
 <button type = "button" onclick = 'comment_post();'>Comment</button>
 </form>
+</fieldset>
+<fieldset id="field"><legend align="left">Output</legend>
 <div id = "output2">
 </div>
 </div>
 </center>
+</fieldset>
 </body>
+</html>

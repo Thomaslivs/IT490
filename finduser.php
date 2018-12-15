@@ -120,7 +120,7 @@ function close()
 <ul>
   <li><a href="/homepage.php">Home</a></li>
   <li><a href="/Reddit_Interface.php">Reddit Interface</a></li>
-  <li><a href="/user.php">User</a></li>
+    <li><a href="/user.php">User</a></li>
   <li><a href="/setting.php">Setting</a></li>
   <li><a href="/logout.php">Log Out</a></li>
 </ul>
@@ -171,12 +171,15 @@ function send_info(){
 <center>
 <div>
 </div>
+<fieldset id="field"><legend align="left">Find User</legend>
 <form >
 <label for="username" > Enter a Username to find if the user exists</label><br>
 <input id="username" type="text" name="username" autocomplete="off" placeholder = "Username" Required><br><br>
 <button type = "button" onclick = 'send_info();'>Send Username</button>
 <p>If NULL, user does not exists</p>
 </form>
+</fieldset>
+<fieldset id="field"><legend align="left">Output</legend>
 <div id = "result" style = "background-color: #FFFFFF">
 <div id = "output1"></div>
 <div id = "output2"></div>
@@ -186,4 +189,5 @@ function send_info(){
 </font>
 
 </center>
+</fieldset>
 </body>

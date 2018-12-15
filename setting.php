@@ -39,16 +39,18 @@ ul {
 			}
 </style>
 </head>
-<?php /*
+<?php 
 session_start();
+/*
 if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
 
 }
 else{
 header('location: login.html');
 }
+*/
 $user = $_SESSION["username"];
-*/?>
+?>
 <body>
 <div id = "nav">
 <ul>
@@ -70,4 +72,43 @@ $user = $_SESSION["username"];
 		<br>
 	</form>
 </fieldset>--->
+<script>
+function send_email(){
+	//debugger;
+	var xhr = new XMLHttpRequest();
+	var url = "RMQEmailNotif.php";
+	var email = document.getElementById("email").value;
+	var yn = document.getElementById("yn").value;
+	var user = "<?php echo $user; ?>";
+	var data = "user="+user+"&email="+email+"&yn="+yn;
+	//document.getElementById("output3").innerHTML = "Email added: " + email + " to " + user + " as " + yn;
+	xhr.open("POST",url, true);
+	xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		xhr.onreadystatechange = function () {
+		if(this.readyState == 4 && this.status == 200){
+			response = this.responseText;
+			endresult = JSON.parse(response);
+			document.getElementById("output3").innerHTML = "Email added: " + email + " to " + user + " as " + yn;
+		}
+};
+	xhr.send(data);
+	
+}
+</script>
+<fieldset id="field"><legend align="left">Receive Email Notifications</legend>
+<form>
+<form>
+		<p>Email</p><input id="email" type="text" name="email" autocomplete="off" placeholder = "Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" Required><br><br>
+		<select id = "yn">
+			<option value = "Yes">Yes</option>
+			<option value = "No"> No </option>
+		</select>
+			<button type = "button" onclick = 'send_email();'>Submit Email</button>
+		</div>
+		<br>
+	</form>
+</fieldset>
+<div id = "output3" >
+</div>
+
 </body>
