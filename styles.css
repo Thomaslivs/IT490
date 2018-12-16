@@ -1,6 +1,10 @@
 @import "animations.css";
 @import "colors.css";
 
+html, body {
+    height: 100%;
+}
+
 html {
     position: fixed;
     width: -webkit-fill-available;
@@ -8,7 +12,6 @@ html {
 
 body {
     margin: 0;
-    height: inherit;
 }
 
 ul {
@@ -112,7 +115,12 @@ li a:hover {
     margin: auto;
     margin-top: 2em;
 }
+#field1 {
+    margin: 0.5em;
+    height: 100%;
+}
 .field {
+    height: 100%;
     width: 60%;
 }
 .login-fields {
@@ -272,7 +280,8 @@ input:focus {
     margin-left: auto;
     margin-right: auto;
     height: inherit;
-    overflow: scroll; 
+    overflow: scroll;
+    z-index: 1; 
 }
 
 .main>h1 {
@@ -318,7 +327,15 @@ input:focus {
     margin: 0 auto 1em auto;
     font-size: 0.9em;
 }
+.fields {
+    position: absolute;
+    width: 75%;
+    left: 11.5%;
 
+    display: flex;
+    justify-content: center;
+    align-items: baseline;    
+}
 
 /*      DESKTOP STYLES       */
 /*---------------------------*/

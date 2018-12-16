@@ -38,18 +38,23 @@ header('location: login.html');
 			</div>
 		</div>
 	</div>
-	<div class="content-wrapper main" style="margin: 0 auto; width: 90%">
-		
-			<div class="content-wrapper--inner">
-			<div class="content-title text-pop-up-top">
-			<h4 style="font-size: 0.9em">Post Comment</h4>
-		</div>
-		<div class="content-subtitle">
-			<p>Make a comment on a submission using the Topic ID. To find the Topic ID, use "Find Topic ID" button. </p>
-			<p>Topic ID's can also be found in a submission's URL before the post title.</p>
-		</div>
-		<a href="findid.php"><p>How to find a topic ID yourself!</p><a>
-					<fieldset id="field">
+	<div class="post-wrapper">
+		<div class="content-wrapper main" style="margin: 0 auto;width: 90%;z-index: 1;">
+
+			<div class="content-wrapper--inner" style="height: 100%">
+				<div class="content-title text-pop-up-top">
+					<h4 style="font-size: 0.9em">Post Comment</h4>
+				</div>
+				<div class="content-subtitle">
+					<p>Make a comment on a submission using the Topic ID. To find the Topic ID, use "Find Topic ID" button. </p>
+					<p>Topic ID's can also be found in a submission's URL before the post title.</p>
+				</div>
+				<a href="findid.php">
+					<p>How to find a topic ID yourself!</p>
+				</a>
+
+				<div class="fields">
+					<fieldset id="field1">
 						<legend align="center">Topic ID</legend>
 						<!-- <button onclick="hidetopic()">Find Topic ID</button> -->
 						<div id="topic" style="display: block">
@@ -65,7 +70,7 @@ header('location: login.html');
 						</div>
 					</fieldset>
 					</fieldset>
-					<fieldset id="field">
+					<fieldset id="field1">
 						<legend align="center">Make Comment</legend>
 						<!-- <button onclick="hide()">Make Comment</button> -->
 						<div id="comment" style="display: block">
@@ -81,14 +86,17 @@ header('location: login.html');
 										<button type="button" onclick='comment_post();'>Comment</button>
 							</form>
 					</fieldset>
-					<fieldset id="field">
+					<fieldset id="field1">
 						<legend align="center">Output</legend>
 						<div id="output2" style="max-width: 100%">
 						</div>
+					</fieldset>
+				</div>
 			</div>
+		</div>
+</div>
 	</div>
-	</div>
-	</fieldset>
+
 </body>
 
 </html>

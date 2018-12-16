@@ -42,7 +42,7 @@ header('location: login.html');
 			</div>
 		</div>
 	</div>
-	<div class="content-wrapper main">
+	<div class="content-wrapper">
 		<div class="content-wrapper--inner">
 			<div class="content-title text-pop-up-top">
 				<h3 style="font-size: .9em">Reddit Campaigns</h3>

@@ -42,7 +42,7 @@
 		</div>
 	</div>
 	<div class="slide-in-blurred-bottom">
-	<div class="header">
+	<div class="header" style="z-index: 0">
 		<h3 class="text-pop-up-top">
 			<?php echo "WELCOME, " .$_SESSION["username"];?> <br> </h3>
 		<p class="headerbody">This is the homepage for Null Breaker's Reddit Social Media Aggregator.</p>
