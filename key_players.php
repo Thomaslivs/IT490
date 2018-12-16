@@ -6,7 +6,6 @@
 <?php
 session_start();
 if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
-
 }
 else{
 header('location: login.html');
@@ -76,6 +75,8 @@ header('location: login.html');
 				<button onclick="hideplayers()">Show Results</button>
 				<div id="players" style="display: none">
 					<div id="output" style="width:100%;height:30%;line-height:1em;overflow:scroll;background-color: #FFFFFF;">
+					</div>
+					<div id = "output2">
 					</div>
 				</div>
 		</div>

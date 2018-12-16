@@ -6,13 +6,14 @@
 <?php
 session_start();
 if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
-
 }
 else{
 header('location: login.html');
 }
 ?>
-
+<script>
+var user1 = "<?php echo $user; ?>"; 
+</script>
 <body>
 	<script type="text/javascript" src="sidenav.js"></script>
 	<script type="text/javascript" src="fns.js"></script>
@@ -77,6 +78,8 @@ header('location: login.html');
 				<div id="threads" style="display: none">
 					<div id="output" style="width:100%;height:150px;line-height:1em;overflow:scroll;background-color: #FFFFFF;">
 					</div>
+				</div>
+				<div id = "output2">
 				</div>
 		</div>
 		</fieldset>
