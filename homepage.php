@@ -6,15 +6,18 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 <?php
-session_start();
-if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
+// session_start();
+// if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
 
-}
-else{
-header('location: login.html');
-}
+// }
+// else{
+// header('location: login.html');
+// }
 ?>
+
 <body>
+	<script type="text/javascript" src="sidenav.js"></script>
+	<script type="text/javascript" src="fns.js"></script>
 	<div id="nav">
 		<ul>
 			<li><a href="/homepage.php">Home</a></li>
@@ -24,9 +27,26 @@ header('location: login.html');
 			<li><a href="/logout.php">Log Out</a></li>
 		</ul>
 	</div>
+	<div class="sidenav-wrapper">
+		<div id="main">
+			<span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
+		</div>
+		<div id="sidenav" class="sidenav" style="black">
+			<div id="sidenav-content" class="sidenav-content">
+				<a href="campaign.php"> Start Campaign</a>
+				<a href="post.php"> Comment</a>
+				<a href="key_threads.php"> Key Threads</a>
+				<a href="key_players.php"> Key Players</a>
+				<a href="finduser.php">Find User</a>
+			</div>
+		</div>
+	</div>
+	<div class="slide-in-blurred-bottom">
 	<div class="header">
-		<h3 class="text-pop-up-top">	<?php echo "WELCOME, " .$_SESSION["username"];?> <br> </h3>
+		<h3 class="text-pop-up-top">
+			<?php echo "WELCOME, " .$_SESSION["username"];?> <br> </h3>
 		<p class="headerbody">This is the homepage for Null Breaker's Reddit Social Media Aggregator.</p>
+	</div>
 </div>
 	<!--- Start of the JS to make navbar sticky --->
 	<script>

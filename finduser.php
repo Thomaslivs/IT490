@@ -26,41 +26,49 @@ header('location: login.html');
 			<li><a href="/logout.php">Log Out</a></li>
 		</ul>
 	</div>
-	<div id="main">
-		<span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
-	</div>
-	<div id="sidenav" class="sidenav" style="black">
-		<a href="campaign.php"> Start Campaign</a>
-		<a href="post.php"> Comment</a>
-		<a href="key_threads.php"> Key Threads</a>
-		<a href="key_players.php"> Key Players</a>
-		<a href="finduser.php">Find User</a>
+
+	<div class="sidenav-wrapper">
+		<div id="main">
+			<span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
+		</div>
+		<div id="sidenav" class="sidenav" style="black">
+			<div id="sidenav-content" class="sidenav-content">
+				<a href="campaign.php"> Start Campaign</a>
+				<a href="post.php"> Comment</a>
+				<a href="key_threads.php"> Key Threads</a>
+				<a href="key_players.php"> Key Players</a>
+				<a href="finduser.php">Find User</a>
+			</div>
+		</div>
 	</div>
 
-	<div class="main">
-
-	</div>
 	<div class="content-wrapper">
 		<div class="content-wrapper--inner">
-		<fieldset id="field">
-			<legend align="center">Find User</legend>
-			<form>
-				<label for="username"> Enter a Username to find if the user exists</label><br>
-				<input id="username" type="text" name="username" autocomplete="off" placeholder="Username" Required><br><br>
-				<button type="button" onclick='send_info();'>Send Username</button>
-				<p>If NULL, user does not exists</p>
-			</form>
-		</fieldset>
-		<fieldset id="field">
-			<legend align="center">Output</legend>
-			<div id="result" style="background-color: #FFFFFF">
-				<div id="output1"></div>
-				<div id="output2"></div>
-				<div id="output3"></div>
-				<div id="output4"></div>
+			<div class="content-title text-pop-up-top">
+				<h4>Key Players</h4>
 			</div>
-			</font>
-</div>
+			<div class="content-subtitle">
+				<p>Search for the users who have posted the most comments on top-scoring posts related to the given topic.</p>
+			</div>
+			<fieldset id="field">
+				<legend align="center">Find User</legend>
+				<form>
+					<label for="username"> Enter a Username to find if the user exists</label><br>
+					<input id="username" type="text" name="username" autocomplete="off" placeholder="Username" Required><br><br>
+					<button type="button" onclick='send_info();'>Send Username</button>
+					<p>If NULL, user does not exists</p>
+				</form>
+			</fieldset>
+			<fieldset id="field">
+				<legend align="center">Output</legend>
+				<div id="result" style="background-color: #FFFFFF">
+					<div id="output1"></div>
+					<div id="output2"></div>
+					<div id="output3"></div>
+					<div id="output4"></div>
+				</div>
+				</font>
+		</div>
 	</div>
 	</fieldset>
 </body>

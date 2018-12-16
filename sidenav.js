@@ -3,15 +3,15 @@ document.getElementById("main").addEventListener("click", toggleNav);
 
 function toggleNav(width) {
 	navSize = document.getElementById("sidenav").style.width;
-	if (navSize == '22%' || navSize == '70%' || navSize == '55%') {
+	if (navSize == '25%' || navSize == '70%' || navSize == '50%') {
 		return close();
-	} else if (window.matchMedia("(min-width: 768px)").matches) {
-		return open("22%");
+	} else if (window.matchMedia("(max-width: 768px)").matches) {
+		return open("50%");
 	}
-	else if (window.matchMedia("(min-width: 600px)").matches) {
-		return open("55%");
-	} else {
+	else if (window.matchMedia("(max-width: 400px)").matches) {
 		return open("70%");
+	} else {
+		return open("25%");
 	}
 
 }

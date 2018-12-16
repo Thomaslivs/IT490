@@ -26,41 +26,65 @@ $user = $_SESSION["username"];
 			<li><a href="/logout.php">Log Out</a></li>
 		</ul>
 	</div>
-	<div class="header" style="margin-bottom: 1em;">
-		<h3>
-			<?php echo "Settings for: ". $user; ?>
-		</h3>
+	<div class="sidenav-wrapper">
+		<div id="main">
+			<span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
+		</div>
+		<div id="sidenav" class="sidenav" style="black">
+			<div id="sidenav-content" class="sidenav-content">
+				<a href="campaign.php"> Start Campaign</a>
+				<a href="post.php"> Comment</a>
+				<a href="key_threads.php"> Key Threads</a>
+				<a href="key_players.php"> Key Players</a>
+				<a href="finduser.php">Find User</a>
+			</div>
+		</div>
+	</div>
+	<div class="header tracking-in-expand-fwd-top" style="margin-bottom: 1em; width: 100%">
+		<h3 class="user-header">User Settings</h3>
+		<h2 class="user-header" style="margin-top: 1em">
+			<?php echo $user; ?>
+		</h2>
 
 	</div>
-	<!--<fieldset id="field"><legend align="left">Change Password</legend>
-	<form action="RMQClient.php" method="post">
-		<p>Old Password</p><input id="ppassword" type="password" name="ppassword" autocomplete="off" placeholder = "Past Password" Required><br><br>
-		<p>New Password</p><input id="npassword" type="password" name="npassword" autocomplete="off" placeholder = "New Password" Required><br><br>		
-		<div class="wrapper">
-			<input type="submit" name="Submit" id = "SettingSubmit" value = "submit">
-		</div>
-		<br>
-	</form>
-</fieldset>--->
-	<div class="content-wrapper">
-		<div class="content-wrapper--inner">
-	<fieldset id="field">
-		<legend align="center">Receive Email Notifications</legend>
-		<form>
-			<form>
-				<p>Email</p><input id="email" type="text" name="email" autocomplete="off" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-				 Required><br><br>
-				<select id="yn">
-					<option value="Yes">Yes</option>
-					<option value="No"> No </option>
-				</select>
-				<button type="button" onclick='send_email();'>Submit Email</button>
-				</div>
-				<br>
+	<div class="slide-in-blurred-right" style="width: 100%;">
+		<!-- <div class="content-wrapper content-wrapper--settings">
+			<div class="content-wrapper--inner">
+				<fieldset class="content-wrapper" id="field" style="width: inherit;">
+					<legend align="center">Change Password</legend>
+					<form action="RMQClient.php" method="post">
+						<p>Old Password</p><input id="ppassword" type="password" name="ppassword" autocomplete="off" placeholder="Past Password"
+						 Required><br><br>
+						<p>New Password</p><input id="npassword" type="password" name="npassword" autocomplete="off" placeholder="New Password"
+						 Required><br><br>
+						<div class="wrapper">
+							<input type="submit" name="Submit" id="SettingSubmit" value="submit">
+						</div>
+						<br>
+					</form>
+				</fieldset>
+			</div>
+		</div> -->
+		<div class="content-wrapper content-wrapper--settings">
+			<div class="content-wrapper--inner">
+				<fieldset id="field" style="width: inherit;">
+					<legend align="center">Receive Email Notifications</legend>
+					<form>
+						<form>
+							<p>Email</p><input id="email" type="text" name="email" autocomplete="off" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+							 Required><br><br>
+							<select id="yn">
+								<option value="Yes">Yes</option>
+								<option value="No"> No </option>
+							</select>
+							<button type="button" onclick='send_email();'>Submit Email</button>
+			</div>
+			<br>
 			</form>
-	</fieldset>
-	<div id="output3">
+			</fieldset>
+			<div id="output3">
+			</div>
+		</div>
 	</div>
-</div>
-</div>
+	</div>
 </body>

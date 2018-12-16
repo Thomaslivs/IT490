@@ -24,22 +24,28 @@ header('location: login.html');
 			<li><a href="/logout.php">Log Out</a></li>
 		</ul>
 	</div>
-	<div id="main">
-		<span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
-	</div>
-	<div id="sidenav" class="sidenav" style="black">
-		<a href="campaign.php"> Start Campaign</a>
-		<a href="post.php"> Comment</a>
-		<a href="key_threads.php"> Key Threads</a>
-		<a href="key_players.php"> Key Players</a>
-		<a href="finduser.php">Find User</a>
-	</div>
-
-	<div class="main">
-
+	<div class="sidenav-wrapper">
+		<div id="main">
+			<span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
+		</div>
+		<div id="sidenav" class="sidenav" style="black">
+			<div id="sidenav-content" class="sidenav-content">
+				<a href="campaign.php"> Start Campaign</a>
+				<a href="post.php"> Comment</a>
+				<a href="key_threads.php"> Key Threads</a>
+				<a href="key_players.php"> Key Players</a>
+				<a href="finduser.php">Find User</a>
+			</div>
+		</div>
 	</div>
 	<div class="content-wrapper">
 		<div class="content-wrapper--inner">
+			<div class="content-title text-pop-up-top">
+				<h4>Key Players</h4>
+			</div>
+			<div class="content-subtitle">
+				<p>Search for the users who have posted the most comments on top-scoring posts related to the given topic.</p>
+			</div>
 			<fieldset id="field">
 				<legend align="center">Key Players</legend>
 				<div class="formcontent">

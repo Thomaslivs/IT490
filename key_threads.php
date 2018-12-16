@@ -1,4 +1,5 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <head>
 	<link rel="stylesheet" href="styles.css">
 </head>
@@ -24,21 +25,28 @@ header('location: login.html');
 			<li><a href="/logout.php">Log Out</a></li>
 		</ul>
 	</div>
-	<div id="main">
-		<span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
+	<div class="sidenav-wrapper">
+		<div id="main">
+			<span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
+		</div>
+		<div id="sidenav" class="sidenav">
+			<div id="sidenav-content" class="sidenav-content">
+				<a href="campaign.php"> Start Campaign</a>
+				<a href="post.php"> Comment</a>
+				<a href="key_threads.php"> Key Threads</a>
+				<a href="key_players.php"> Key Players</a>
+				<a href="finduser.php">Find User</a>
+			</div>
+		</div>
 	</div>
-	<div id="sidenav" class="sidenav" style="black">
-		<a href="campaign.php"> Start Campaign</a>
-		<a href="post.php"> Comment</a>
-		<a href="key_threads.php"> Key Threads</a>
-		<a href="key_players.php"> Key Players</a>
-		<a href="finduser.php">Find User</a>
-	</div>
-	<div class="main">
-
-	</div>
-	<div class="content-wrapper">
-		<div class="content-wrapper--inner">
+	<div class="content-wrapper main" style="width: 90%; margin: 2em auto;">
+		<div class="content-title text-pop-up-top">
+			<h4>Key Threads</h4>
+		</div>
+		<div class="content-subtitle">
+			<p>Search for the highest-scoring recent posts about the given topic.</p>
+		</div>
+		<div class="content-wrapper--inner" style="width: 70%">
 			<fieldset id="field">
 				<legend align="center">Key Threads</legend>
 				<form>
@@ -67,7 +75,7 @@ header('location: login.html');
 				<legend align="center">Output</legend>
 				<button onclick="hidethreads()">Show Results</button>
 				<div id="threads" style="display: none">
-					<div id="output" style="width:800px;height:150px;line-height:1em;overflow:scroll;padding:5px;background-color: #FFFFFF;">
+					<div id="output" style="width:100%;height:150px;line-height:1em;overflow:scroll;background-color: #FFFFFF;">
 					</div>
 				</div>
 		</div>

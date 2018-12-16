@@ -2,7 +2,7 @@
 
 
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="styles.css">
 </head>
 
@@ -44,10 +44,13 @@ else{
 			</div>
 		</div>
 	</div>
-	<div class="main">
-		<h1 class="text-focus-in">Reddit Social Media Aggregator</h1>
-		<div class="main-body slide-in-right">
-			<p>To the left side of the page are tabs to redirect to other pages.</p><br>
+	<div class="main slide-in-blurred-bottom" style="padding-top: 4em; margin-top:0;">
+		<div class="interface-header text-pop-up-top" style="height: 25%">
+			<h3 class="main-header" style="width: 80%; ">Reddit Social Media Aggregator</h3>
+		</div>
+
+		<div class="main-body" style="padding-top: 0em">
+			<p><br><br><br></p>
 			<p> <b>Start Campaign</b>: Starts a campaign(allowing for multiple topics at set intervals) or posts a topic to that
 				Sub-Reddit
 				Requires -> A subreddit name , a title, and post. <br>

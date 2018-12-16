@@ -6,6 +6,10 @@ html {
     width: -webkit-fill-available;
 }
 
+body {
+    margin: 0;
+    height: inherit;
+}
 
 ul {
     list-style-type: none;
@@ -45,6 +49,14 @@ li a {
     text-align: center;
     background-color: var(--color-primary-3);
     height: 38px;
+}
+
+#nav {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
 }
 
 html {
@@ -97,20 +109,29 @@ li a:hover {
 }
 
 #field {
-    width: inherit;
     margin: auto;
+    margin-top: 2em;
+}
+.field {
+    width: 60%;
+}
+.login-fields {
+    width: 40%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 label {
     display: inline-block;
     width: 60%;
-    margin-right: 0;
+    /* margin-right: 1em; */
     text-align: center;
-    margin-top: 0.25em;
+    margin: 0.25em 0;
 }
 
 fieldset {
-    width: 50%px;
     margin: 0% auto;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 1.125em;
@@ -147,7 +168,7 @@ textarea {
 
 textarea:focus,
 input:focus {
-    color: white;
+    color: black;
 }
 
 .content-wrapper {
@@ -156,10 +177,12 @@ input:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 1em;
 }
 .content-wrapper--inner {
     width: 80%;
-    margin:auto;
+    margin-left:auto;
+    margin-right:auto;
 }
 .content-wrapper--inner > a > p{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -176,7 +199,6 @@ input:focus {
     width: 100%;
 }
 .numbers > select {
-    margin-left: 1em;
     height: 1.5em;
 }
 
@@ -190,9 +212,9 @@ input:focus {
 
 /* SIDEBAR MENU */
 .sidenav {
-    height: 30%;
+    margin-top: -3em;
+    height: 16em;
     width: 0%;
-    position: fixed;
     z-index: 1;
     top: 55;
     left: 0;
@@ -201,7 +223,7 @@ input:focus {
     transition: 0.5s;
     padding-top: 60px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin-top: 3.5em;
+    padding-top: 38px;
 }
 
 .sidenav a {
@@ -228,8 +250,11 @@ input:focus {
 }
 
 .sidenav-wrapper {
-    padding-top: 1em;
+    width: 100%;
+    z-index: 2;
+    position: absolute;
 }
+
 
 #main {
     transition: margin-left .5s;
@@ -237,15 +262,24 @@ input:focus {
 }
 
 .main {
-    width: 80%;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    margin: auto;
+    /* margin-top: 2em; */
+    padding-top: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    height: inherit;
+    overflow: scroll; 
 }
 
 .main>h1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+.main>h3 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
 }
@@ -253,15 +287,17 @@ input:focus {
 .main-body {
     padding-left: 1.5em;
     text-indent: -1.5em;
+    width:80%; 
+    height: inherit;
 }
 
 .main-body>p {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
+/* 
 .main-body>p:first-child {
     text-align: center;
-}
+} */
 
 #comment {
     display: flex;
@@ -270,15 +306,37 @@ input:focus {
     align-items: center;
 }
 
+.user-header {
+    text-align: center;
+}
+.content-title, .content-subtitle {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.interface-header > h3{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin: 0 auto 1em auto;
+    font-size: 0.9em;
+}
+
+
 /*      DESKTOP STYLES       */
 /*---------------------------*/
 @media screen and (min-height: 768px) {
-    .sidenav {
-        padding-top: 15px;
-        margin-top: 1.5em;
-    }
-
     .sidenav a {
         font-size: 18px;
+    }
+    .content-wrapper--settings {
+        max-width: 800px !important;
+        margin: auto;
+    }
+}
+@media screen and (min-height: 550px) {
+    .main {
+        padding-top: 0;
+        /* margin-top: 2em; */
+    }
+    .main-body {
+        padding-top: 0em;
     }
 }

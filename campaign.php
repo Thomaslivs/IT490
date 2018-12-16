@@ -28,25 +28,32 @@ header('location: login.html');
 			<li><a href="/logout.php">Log Out</a></li>
 		</ul>
 	</div>
-	<div id="main">
-		<span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
+	<div class="sidenav-wrapper">
+		<div id="main">
+			<span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
+		</div>
+		<div id="sidenav" class="sidenav" style="black">
+			<div id="sidenav-content" class="sidenav-content">
+				<a href="campaign.php"> Start Campaign</a>
+				<a href="post.php"> Comment</a>
+				<a href="key_threads.php"> Key Threads</a>
+				<a href="key_players.php"> Key Players</a>
+				<a href="finduser.php">Find User</a>
+			</div>
+		</div>
 	</div>
-	<div id="sidenav" class="sidenav" style="black">
-		<a href="campaign.php"> Start Campaign</a>
-		<a href="post.php"> Comment</a>
-		<a href="key_threads.php"> Key Threads</a>
-		<a href="key_players.php"> Key Players</a>
-		<a href="finduser.php">Find User</a>
-	</div>
-	<div class="main">
-
-	</div>
-	<div class="content-wrapper">
+	<div class="content-wrapper main">
 		<div class="content-wrapper--inner">
+			<div class="content-title text-pop-up-top">
+				<h3 style="font-size: .9em">Reddit Campaigns</h3>
+			</div>
+			<div class="content-subtitle">
+				<p>Start campaigns to auto-post on your behalf. Posts will be submitted every [x] hours. </p>
+			</div>
 			<fieldset id="field">
 				<legend align="center">Start Campaign</legend>
 				<form>
-					<label for="subredditname"> Enter a Sub-Reddit Name</label><br>
+					<label for="subredditname">Enter a Sub-Reddit Name</label><br>
 					<input id="subredditname" type="text" name="subredditname" autocomplete="off" placeholder="Sub-Reddit Name"
 					 Required><br><br>
 					<label for="title"> Enter a Title</label><br>
