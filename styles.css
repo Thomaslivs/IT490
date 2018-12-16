@@ -259,7 +259,7 @@ input:focus {
 
 .sidenav-wrapper {
     width: 100%;
-    z-index: 0;
+    z-index: 1;
     height: 38px;
     position: absolute;
 }
@@ -357,6 +357,7 @@ input:focus {
     .main-body {
         padding-top: 0em;
     }
+<<<<<<< HEAD
 } */
 
 @media screen and (max-width: 768px) {
@@ -368,3 +369,6 @@ input:focus {
         width: 100%;
     }
 }
+=======
+}
+>>>>>>> 5f7884d75045fc70a16d64db5d6d83980b25219d
