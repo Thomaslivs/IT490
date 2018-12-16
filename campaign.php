@@ -19,6 +19,9 @@ header('location: login.html');
 <body>
 	<script type="text/javascript" src="sidenav.js"></script>
 	<script type="text/javascript" src="fns.js"></script>
+<script type="text/javascript" >
+	var user1 = "<?php echo $user; ?>"; 
+</script>
 	<div id="nav">
 		<ul>
 			<li><a href="/homepage.php">Home</a></li>

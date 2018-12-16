@@ -16,15 +16,17 @@ $name = $_POST['subredditname'];
 $title = $_POST['title'];
 $post = $_POST['post'];
 $delay = $_POST['delay'];
+$user = $_POST['user'];
 $request = array();
 $request['type'] = "campaign";
 $request['name'] = $name;
 $request['title'] = $title;
 $request['post'] = $post;
 $request['hour'] = $delay;
+$request['user'] = $user;
 $request['message'] = $msg;
 $response = $client->send_request($request);
-
+/*
 $client2 = new rabbitMQClient("RMQCampaign2.ini","testServer");
 $user = $_POST['user'];
 $sub = $_POST['subredditname'];
@@ -35,7 +37,8 @@ $request['subreddit'] = $sub;
 $request['title'] = $title;
 $request['message'] = $msg;
 $response2 = $client2->send_request($request);
+*/
 echo $response;
-echo $response2;
+//echo $response2;
 
 ?>
