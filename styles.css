@@ -259,8 +259,7 @@ input:focus {
 
 .sidenav-wrapper {
     width: 100%;
-    z-index: 0;
-    height: 38px;
+    z-index: 2;
     position: absolute;
 }
 
