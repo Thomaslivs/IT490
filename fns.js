@@ -56,7 +56,7 @@ function comment_post() {
         if (this.readyState == 4 && this.status == 200) {
             response = this.responseText;
             endresult = JSON.parse(response);
-            document.getElementById("output2").innerHTML = "Comment Made: " + decodeURIComponent(comment) + data;
+            document.getElementById("output2").innerHTML = "Comment Made: " + decodeURIComponent(comment);
         }
     };
     xhr.send(data);
@@ -149,7 +149,7 @@ function key_users() {
            document.getElementById("output2").appendChild(img);
             if (document.getElementById("output").innerHTML == "Loading....") {
                 document.getElementById("output").innerHTML = "";
-                for (var i = 0; i < endresult.length; i++) {
+                for (var i = 0; i < (endresult.length)-1; i++) {
                     var br = document.createElement('br'); //create link
                     document.getElementById("output").appendChild(br);
                     document.getElementById("output").innerHTML += endresult[i]; //add to body
