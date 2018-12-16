@@ -77,8 +77,6 @@ header('location: login.html');
 				<div id="players" style="display: none">
 					<div id="output" style="width:100%;height:30%;line-height:1em;overflow:scroll;background-color: #FFFFFF;">
 					</div>
-					<div id = "output2">
-					</div>
 				</div>
 		</div>
 		</fieldset>
