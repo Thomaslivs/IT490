@@ -270,3 +270,23 @@ function make_graph() {
         }
     }
     };
+function make_email(){
+	//debugger;
+	var xhr = new XMLHttpRequest();
+	var url = "RMQmakeemail.php";
+	var user = user1;
+	var data = "user="+user;
+	//document.getElementById("output3").innerHTML = "Email added: " + email + " to " + user + " as " + yn;
+	xhr.open("POST",url, true);
+	document.getElementById("output4").innerHTML = "Email Sent";
+	xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		xhr.onreadystatechange = function () {
+		if(this.readyState == 4 && this.status == 200){
+			response = this.responseText;
+			endresult = response;
+			document.getElementById("output4").innerHTML = endresult;
+		}
+};
+	xhr.send(data);
+	
+}

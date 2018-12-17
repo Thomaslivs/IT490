@@ -13,7 +13,9 @@ header('location: login.html');
 }
 $user = $_SESSION["username"];
 ?>
-
+<script>
+var user1 = "<?php echo $user ?>";
+</script>
 <body>
 	<script type="text/javascript" src="sidenav.js"></script>
 	<script type="text/javascript" src="fns.js"></script>
@@ -82,9 +84,21 @@ $user = $_SESSION["username"];
 			</div>
 			<br>
 			</form>
-			</fieldset>
 			<div id="output3">
 			</div>
+			</fieldset>
+			<fieldset id="field" style="width: 25%">
+			<legend align="center">Receive Email Notifications</legend>
+			<form>
+							<button type="button" onclick='make_email();'>Test Email</button>
+			</div>
+			<br>
+			</form>
+			<center>
+			<div id="output4">
+			</div>
+			<center>
+			</fieldset>
 		</div>
 	</div>
 	</div>
