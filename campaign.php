@@ -15,9 +15,7 @@ else{
 header('location: login.html');
 }
 ?>
-<script>
-var user1 = "<?php echo $user ?>";
-</script>
+
 <body>
 	<script type="text/javascript" src="sidenav.js"></script>
 	<script type="text/javascript" src="fns.js"></script>
@@ -25,6 +23,7 @@ var user1 = "<?php echo $user ?>";
 		<ul>
 			<li><a href="/homepage.php">Home</a></li>
 			<li><a href="/Reddit_Interface.php">Reddit Interface</a></li>
+			<li><a href="/showgraph.php">Campaign Graph</a></li>
 			<li><a href="/user.php">User</a></li>
 			<li><a href="/setting.php">Setting</a></li>
 			<li><a href="/logout.php">Log Out</a></li>
@@ -44,39 +43,41 @@ var user1 = "<?php echo $user ?>";
 			</div>
 		</div>
 	</div>
-	<div class="content-wrapper">
+	<div class="content-wrapper main">
 		<div class="content-wrapper--inner">
 			<div class="content-title text-pop-up-top">
 				<h3 style="font-size: .9em">Reddit Campaigns</h3>
 			</div>
-			<div class="content-subtitle">
+			<div class="content-subtitle slide-in-blurred-bottom">
 				<p>Start campaigns to auto-post on your behalf. Posts will be submitted every [x] hours. </p>
 			</div>
-			<fieldset id="field">
-				<legend align="center">Start Campaign</legend>
-				<form>
-					<label for="subredditname">Enter a Sub-Reddit Name</label><br>
-					<input id="subredditname" type="text" name="subredditname" autocomplete="off" placeholder="Sub-Reddit Name"
-					 Required><br><br>
-					<label for="title"> Enter a Title</label><br>
-					<input id="title" type="text" name="title" autocomplete="off" placeholder="Title" Required><br><br>
-					<label for="post"> Enter a Post</label><br>
-					<textarea id="post" type="text" name="post" autocomplete="off" placeholder="Post" Required></textarea><br><br>
-					<label for="delay"> Enter how long to delay the Post by</label><br>
-					<input id="delay" style="width: 10em;" type="number" name="delay" min="0" max="9999" autocomplete="off"
-					 placeholder="Enter delay(hour)" Required><br><br>
-					<button type="button" onclick='start_campaign();'>Start Campaign</button>
-				</form>
-			</fieldset>
-			<fieldset id="field">
-				<legend align="center">Output</legend>
-				<font size="4">
-					<div style="background-color: #FFFFFF">
-						<div id="output">
+			<div class="slide-in-blurred-bottom fields">
+				<fieldset id="field2">
+					<legend align="center">Start Campaign</legend>
+					<form>
+						<label for="subredditname">Enter a Sub-Reddit Name</label><br>
+						<input id="subredditname" type="text" name="subredditname" autocomplete="off" placeholder="Sub-Reddit Name"
+						 Required><br><br>
+						<label for="title"> Enter a Title</label><br>
+						<input id="title" type="text" name="title" autocomplete="off" placeholder="Title" Required><br><br>
+						<label for="post"> Enter a Post</label><br>
+						<textarea id="post" type="text" name="post" autocomplete="off" placeholder="Post" Required></textarea><br><br>
+						<label for="delay"> Enter how long to delay the Post by</label><br>
+						<input id="delay" style="width: 10em;" type="number" name="delay" min="0" max="9999" autocomplete="off"
+						 placeholder="Enter delay(hour)" Required><br><br>
+						<button type="button" onclick='start_campaign();'>Start Campaign</button>
+					</form>
+				</fieldset>
+				<fieldset id="field2">
+					<legend align="center">Output</legend>
+					<font size="4">
+						<div style="background-color: #FFFFFF">
+							<div id="output">
+							</div>
 						</div>
-					</div>
-				</font>
-			</fieldset>
+					</font>
+				</fieldset>
+			</div>
 		</div>
 	</div>
 </body>

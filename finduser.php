@@ -21,7 +21,7 @@ header('location: login.html');
 		<ul>
 			<li><a href="/homepage.php">Home</a></li>
 			<li><a href="/Reddit_Interface.php">Reddit Interface</a></li>
-			<li><a href="/showgraph.php">Campiagn Graph</a></li>
+			<li><a href="/showgraph.php">Campaign Graph</a></li>
 			<li><a href="/user.php">User</a></li>
 			<li><a href="/setting.php">Setting</a></li>
 			<li><a href="/logout.php">Log Out</a></li>
@@ -42,34 +42,40 @@ header('location: login.html');
 			</div>
 		</div>
 	</div>
-
+	<div class="scroller">
 	<div class="content-wrapper">
 		<div class="content-wrapper--inner">
 			<div class="content-title text-pop-up-top">
-				<h4>Key Players</h4>
+				<h4>User Search</h4>
 			</div>
-			<div class="content-subtitle">
-				<p>Search for the users who have posted the most comments on top-scoring posts related to the given topic.</p>
+			<div class="content-subtitle slide-in-blurred-bottom">
+				<p>Check to see if a user exists and get basic information from their profile.</p>
 			</div>
-			<fieldset id="field">
-				<legend align="center">Find User</legend>
-				<form>
-					<label for="username"> Enter a Username to find if the user exists</label><br>
-					<input id="username" type="text" name="username" autocomplete="off" placeholder="Username" Required><br><br>
-					<button type="button" onclick='send_info();'>Send Username</button>
-					<p>If NULL, user does not exists</p>
-				</form>
-			</fieldset>
-			<fieldset id="field">
-				<legend align="center">Output</legend>
-				<div id="result" style="background-color: #FFFFFF">
-					<div id="output1"></div>
-					<div id="output2"></div>
-					<div id="output3"></div>
-					<div id="output4"></div>
-				</div>
-				</font>
+			<div class="slide-in-blurred-bottom">
+				<div class="fields">
+				<fieldset id="field2">
+					<legend align="center">Find User</legend>
+					<form>
+						<label for="username"> Enter a Username to find if the user exists</label><br>
+						<input id="username" type="text" name="username" autocomplete="off" placeholder="Username" Required><br><br>
+						<button type="button" onclick='send_info();'>Send Username</button>
+						<p>If NULL, user does not exists</p>
+					</form>
+				</fieldset>
+				<fieldset id="field2">
+					<legend align="center">Output</legend>
+					<div class="result" w>
+						<div id="output1"></div>
+						<div id="output2"></div>
+						<div id="output3"></div>
+						<div id="output4"></div>
+					</div>
+					</font>
+				</fieldset>
+</div>
+</div>
+			</div>
 		</div>
 	</div>
-	</fieldset>
+
 </body>

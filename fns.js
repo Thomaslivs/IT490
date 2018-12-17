@@ -56,7 +56,7 @@ function comment_post() {
         if (this.readyState == 4 && this.status == 200) {
             response = this.responseText;
             endresult = JSON.parse(response);
-            document.getElementById("output2").innerHTML = "Comment Made: " + decodeURIComponent(comment);
+            document.getElementById("output2").innerHTML = "Comment Made: " + decodeURIComponent(comment) + data;
         }
     };
     xhr.send(data);
@@ -74,7 +74,7 @@ function hidethreads() {
 
 function key_threads() {
     //debugger;
-    document.getElementById("output").innerHTML = "Loading.....";
+    document.getElementById("threads").innerHTML = "Loading.....";
     var xhr = new XMLHttpRequest();
     var url = "RMQKey_threads.php";
     var keyword = document.getElementById("keyword").value;
@@ -95,23 +95,23 @@ function key_threads() {
             var bmlink = '<a href= "';
             var emlink = '">';
             var a = document.createElement('a');
-            if (document.getElementById("output").innerHTML == "Loading.....") {
-                document.getElementById("output").innerHTML = "";
-                document.getElementById("output").innerHTML += "New Search";
-                document.getElementById("output").innerHTML += "\n";
+            if (document.getElementById("threads").innerHTML == "Loading.....") {
+                document.getElementById("threads").innerHTML = "";
+                document.getElementById("threads").innerHTML += "New Search";
+                document.getElementById("threads").innerHTML += "\n";
                 for (var i = 0; i < endresult.length; i++) {
                     var link = document.createElement('a'); //create link
                     var br = document.createElement('br'); //create link
                     link.setAttribute('href', endresult[i]); //set href
                     link.innerHTML = 'Link#' + (i + 1); //set text to be seen
-                    document.getElementById("output").appendChild(br);
-                    document.getElementById("output").appendChild(link); //add to body
-                    document.getElementById("output").innerHTML += ": ";
-                    document.getElementById("output").innerHTML += endresult[i]; //add to body
-                    document.getElementById("output").appendChild(br);
+                    document.getElementById("threads").appendChild(br);
+                    document.getElementById("threads").appendChild(link); //add to body
+                    document.getElementById("threads").innerHTML += ": ";
+                    document.getElementById("threads").innerHTML += endresult[i]; //add to body
+                    document.getElementById("threads").appendChild(br);
                 }
             } else {
-                document.getElementById("output").innerHTML == "Loading.....";
+                document.getElementById("threads").innerHTML == "";
             }
 
         }
@@ -146,50 +146,26 @@ function key_users() {
            img.width = 800;
            img.height = 600;
            img.alt = "Graph of Key Players";
-           document.getElementById("output2").appendChild(img);
-            if (document.getElementById("output").innerHTML == "Loading....") {
-                document.getElementById("output").innerHTML = "";
-                for (var i = 0; i < (endresult.length)-1; i++) {
+           document.getElementById("output").appendChild(img);
+            if (document.getElementById("players").innerHTML == "Loading....") {
+                document.getElementById("players").innerHTML = "";
+                for (var i = 0; i < endresult.length; i++) {
                     var br = document.createElement('br'); //create link
-                    document.getElementById("output").appendChild(br);
-                    document.getElementById("output").innerHTML += endresult[i]; //add to body
+                    document.getElementById("players").appendChild(br);
+                    if (i == endresult.length - 1) {
+                        var link = '<a href="' + endresult[i] + '">' + endresult[i] + "</a>"
+                        document.getElementById("players").innerHTML += endresult[i]; //add to body
+                    }
+                    else {
+                        document.getElementById("players").innerHTML += endresult[i]; //add to body
+                    }
                 }
             } else {
-                document.getElementById("output").innerHTML = "Loading....";
+                document.getElementById("players").innerHTML = "Loading....";
             }
         }
     };
-    document.getElementById("output").innerHTML = "Loading....";
-    xhr.send(data);
-
-}
-
-function make_graph() {
-    //debugger;
-    var xhr = new XMLHttpRequest();
-    var url = "RMQMake_Graph.php";
-    var kc = document.getElementById("kc").value;
-    var data = "kc=" + kc + "&user="+user1;
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            response = this.responseText;
-            endresult = response;
-	if (endresult.length == 24 && endresult.includes("There")){
-		document.getElementById("output2").innerHTML = endresult;
-	}
-	else {
-	   var img = document.createElement("img");
-       	   img.src = endresult;
-           img.width = 800;
-           img.height = 600;
-           img.alt = "Graph of Campaigns";
-           document.getElementById("output2").appendChild(img);
-	}
-        }
-    };
-    document.getElementById("output2").innerHTML = "Loading....";
+    document.getElementById("players").innerHTML = "Loading....";
     xhr.send(data);
 
 }
@@ -267,3 +243,30 @@ function send_email(){
 	xhr.send(data);
 	
 }
+
+function make_graph() {
+    //debugger;
+    var xhr = new XMLHttpRequest();
+    var url = "RMQMake_Graph.php";
+    var kc = document.getElementById("kc").value;
+    var data = "kc=" + kc + "&user="+user1;
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            response = this.responseText;
+            endresult = response;
+	if (endresult.length == 24 && endresult.includes("There")){
+		document.getElementById("output2").innerHTML = endresult;
+	}
+	else {
+	   var img = document.createElement("img");
+       	   img.src = endresult;
+           img.width = 800;
+           img.height = 600;
+           img.alt = "Graph of Campaigns";
+           document.getElementById("output2").appendChild(img);
+	}
+        }
+    }
+    };

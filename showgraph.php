@@ -14,8 +14,9 @@ header('location: login.html');
 }
 ?>
 <script>
-var user1 = "<?php echo $user; ?>";
+	var user1 = "<?php echo $user; ?>";
 </script>
+
 <body>
 	<script type="text/javascript" src="sidenav.js"></script>
 	<script type="text/javascript" src="fns.js"></script>
@@ -31,29 +32,38 @@ var user1 = "<?php echo $user; ?>";
 		</ul>
 	</div>
 
+	<div class="scroller">
+		<div class="content-wrapper">
+			<div class="content-wrapper--inner">
+				<div class="content-title text-pop-up-top">
+					<h4>Graphs</h4>
+				</div>
+				<div class="content-subtitle">
+				</div>
 
-	<div class="content-wrapper">
-		<div class="content-wrapper--inner">
-			<div class="content-title text-pop-up-top">
-				<h4>Graphs</h4>
+				<div class="fields--graph">
+					<div class="fields--graph-left ">
+						<fieldset id="field6">
+							<legend align="center">Find User</legend>
+							<form>
+								<label for="graph"> Select to show based on Karma or Comments</label><br>
+								<select id="kc">
+									<option value="karma">Karma</option>
+									<option value="comments"> Comments </option>
+								</select>
+								<button type="button" onclick='make_graph();'>Make Graph</button>
+							</form>
+
+						</fieldset>
+					</div>
+					<fieldset id="field5" class="slide-in-blurred-right">
+						<legend align="center">Graph</legend>
+						<div id="output2">
+							<img src="https://i.imgur.com/tAT4Vze.png" width="800" height="600" alt="Graph of Key Threads">
+						</div>
+
+					</fieldset>
+				</div>
 			</div>
-			<div class="content-subtitle">
-	</div>
-			<fieldset id="field">
-				<legend align="center">Find User</legend>
-				<form>
-					<label for="graph"> Select to show based on Karma or Comments</label><br>
-					<select id="kc">
-								<option value="karma">Karma</option>
-								<option value="comments"> Comments </option>
-							</select>
-							<button type="button" onclick='make_graph();'>Make Graph</button>
-				</form>
-			</fieldset>
-			<fieldset id="field">
-				<legend align="center">Output</legend>
-					<div id="output2"></div>
 		</div>
-	</div>
-	</fieldset>
 </body>

@@ -22,6 +22,7 @@
 		<ul>
 			<li><a href="/homepage.php">Home</a></li>
 			<li><a href="/Reddit_Interface.php">Reddit Interface</a></li>
+			<li><a href="/showgraph.php">Campaign Graph</a></li>
 			<li><a href="/user.php">User</a></li>
 			<li><a href="/setting.php">Setting</a></li>
 			<li><a href="/logout.php">Log Out</a></li>
@@ -43,8 +44,8 @@
 	</div>
 	<div class="slide-in-blurred-bottom">
 	<div class="header" style="z-index: 0">
-		<h3 class="text-pop-up-top">
-			<?php echo "WELCOME, " .$_SESSION["username"];?> <br> </h3>
+		<h3 class="text-pop-up-top" style="text-align: center;">
+			<?php echo "Welcome, " .$_SESSION["username"];?> <br> </h3>
 		<p class="headerbody">This is the homepage for Null Breaker's Reddit Social Media Aggregator.</p>
 	</div>
 </div>
