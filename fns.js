@@ -176,13 +176,17 @@ function make_graph() {
         if (this.readyState == 4 && this.status == 200) {
             response = this.responseText;
             endresult = response;
-	document.getElementById("output2").innerHTML = endresult[0];
-		var img = document.createElement("img");
-       	   img.src = endresult[0];
+	if (endresult == "There are no campaigns"){
+		document.getElementById("output2").innerHTML = endresult;
+	}
+	else {
+	   var img = document.createElement("img");
+       	   img.src = endresult;
            img.width = 800;
            img.height = 600;
            img.alt = "Graph of Campaigns";
            document.getElementById("output2").appendChild(img);
+	}
         }
     };
     document.getElementById("output2").innerHTML = "Loading....";
