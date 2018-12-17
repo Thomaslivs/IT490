@@ -176,7 +176,7 @@ function make_graph() {
         if (this.readyState == 4 && this.status == 200) {
             response = this.responseText;
             endresult = response;
-	if (endresult == "There are no campaigns"){
+	if (endresult.length == 24 && endresult.includes("There")){
 		document.getElementById("output2").innerHTML = endresult;
 	}
 	else {
