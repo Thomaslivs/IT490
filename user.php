@@ -23,6 +23,7 @@ header('location: login.html');
 		<ul>
 			<li><a href="/homepage.php">Home</a></li>
 			<li><a href="/Reddit_Interface.php">Reddit Interface</a></li>
+			<li><a href="/showgraph.php">Campaign Graph</a></li>
 			<li><a href="/user.php">User</a></li>
 			<li><a href="/setting.php">Setting</a></li>
 			<li><a href="/logout.php">Log Out</a></li>
