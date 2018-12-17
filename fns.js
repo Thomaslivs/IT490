@@ -164,6 +164,32 @@ function key_users() {
 
 }
 
+function make_graph() {
+    //debugger;
+    var xhr = new XMLHttpRequest();
+    var url = "RMQMake_Graph.php";
+    var kc = document.getElementById("kc").value;
+    var data = "kc=" + kc + "&user="+user1;
+    xhr.open("POST", url, true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            response = this.responseText;
+            endresult = response;
+	document.getElementById("output2").innerHTML = endresult[0];
+		var img = document.createElement("img");
+       	   img.src = endresult[0];
+           img.width = 800;
+           img.height = 600;
+           img.alt = "Graph of Campaigns";
+           document.getElementById("output2").appendChild(img);
+        }
+    };
+    document.getElementById("output2").innerHTML = "Loading....";
+    xhr.send(data);
+
+}
+
 function send_info() {
     //debugger;
     var xhr = new XMLHttpRequest();

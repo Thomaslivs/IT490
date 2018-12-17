@@ -45,8 +45,6 @@ header('location: login.html');
 			<div class="content-subtitle">
 				<p>Search for the users who have posted the most comments on top-scoring posts related to the given topic.</p>
 			</div>
-
-			<div class="fields">
 			<fieldset id="field">
 				<legend align="center">Key Players</legend>
 				<div class="formcontent">
@@ -72,16 +70,15 @@ header('location: login.html');
 						<p> Warning this may take a while</p>
 					</form>
 			</fieldset>
-			<fieldset id="field" style="height: 300px; width:300px;">
+			<fieldset id="field">
 				<legend align="center">Output</legend>
 				<button onclick="hideplayers()">Show Results</button>
-				<div id="players" style="display: none; ">
-					<div id="output" style="width:100%;height:70%;line-height:1em;overflow:scroll;background-color: #FFFFFF;">
+				<div id="players" style="display: none">
+					<div id="output" style="width:100%;height:30%;line-height:1em;overflow:scroll;background-color: #FFFFFF;">
 					</div>
 					<div id = "output2">
 					</div>
 				</div>
+		</div>
 		</fieldset>
-</div>
-</div>
 </body>
