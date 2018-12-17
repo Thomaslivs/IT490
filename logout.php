@@ -27,10 +27,13 @@ header('Refresh:5;url = login.html');
 ?>
 <!--- Start of the HTML and JS counter --->
 <!--- Change the counter var and number in count to change the length of the count --->
+<div class="main">
+	<div class="main-body slide-in-blurred-top" style="text-align: center;">
 <p> Session is being destroyed</p>
 <p>You will be redirected in <span id="count">5</span> seconds....</p>
 <p> Click <a href="login.html">here</a> if you are not redirected....</p>
-
+</div>
+</div>
 <script type="text/javascript">
 	window.onload = function () {
 		(function () {

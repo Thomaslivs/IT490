@@ -31,7 +31,20 @@ header('location: login.html');
 			<li><a href="/logout.php">Log Out</a></li>
 		</ul>
 	</div>
-
+	<div class="sidenav-wrapper">
+		<div id="main">
+			<span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776;</span>
+		</div>
+		<div id="sidenav" class="sidenav" style="black">
+			<div id="sidenav-content" class="sidenav-content">
+				<a href="campaign.php"> Start Campaign</a>
+				<a href="post.php"> Comment</a>
+				<a href="key_threads.php"> Key Threads</a>
+				<a href="key_players.php"> Key Players</a>
+				<a href="finduser.php">Find User</a>
+			</div>
+		</div>
+	</div>
 	<div class="scroller">
 		<div class="content-wrapper">
 			<div class="content-wrapper--inner">
@@ -43,7 +56,7 @@ header('location: login.html');
 
 				<div class="fields--graph">
 					<div class="fields--graph-left ">
-						<fieldset id="field6">
+						<fieldset id="field6" class="slide-in-blurred-left" style="animation-delay: 0.25s">
 							<legend align="center">Find User</legend>
 							<form>
 								<label for="graph"> Select to show based on Karma or Comments</label><br>
@@ -59,7 +72,7 @@ header('location: login.html');
 					<fieldset id="field5" class="slide-in-blurred-right">
 						<legend align="center">Graph</legend>
 						<div id="output2">
-							<img src="https://i.imgur.com/tAT4Vze.png" width="800" height="600" alt="Graph of Key Threads">
+							
 						</div>
 
 					</fieldset>

@@ -16,9 +16,7 @@ if($_POST['signpass'] == $_POST['resignpass'])
 	$request2['type'] = "register";
 	$request2['username'] = $_POST['signuser'];
 	$request2['password'] = $_POST['signpass'];
-	$request2['reddituser'] = $_POST['reddituser'];
-	$request2['redditpass'] = $_POST['redditpass'];
-	$request2['message'] = $msg;
+	$request2['message'] = 'Register Request';
 	$response2 = $client->send_request($request2);
 	//$response = $client->publish($request);
 	echo "client received response: ".PHP_EOL;

@@ -44,8 +44,8 @@ header('location: login.html');
 		</div>
 	</div>
 	<div class="header tracking-in-expand-fwd-top">
-		<h3 class="user-header">
-			<?php echo "User: " .$_SESSION["username"];?> <br></h3>
+		<h3 class="user-header text-pop-up-top">
+			<?php echo "User: " . ucfirst($_SESSION["username"]);?> <br></h3>
 	</div>
 	<div id="Message">
 	</div>

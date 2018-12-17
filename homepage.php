@@ -6,13 +6,13 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 <?php
-// session_start();
-// if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
+session_start();
+if (isset($_SESSION["username"]) && !empty($_SESSION["username"])){
 
-// }
-// else{
-// header('location: login.html');
-// }
+}
+else{
+header('location: login.html');
+}
 ?>
 
 <body>
@@ -44,8 +44,8 @@
 	</div>
 	<div class="slide-in-blurred-bottom">
 	<div class="header" style="z-index: 0">
-		<h3 class="text-pop-up-top" style="text-align: center;">
-			<?php echo "Welcome, " .$_SESSION["username"];?> <br> </h3>
+		<h3 class="text-pop-up-top" style="text-align: center; text-tra">
+			<?php echo "Welcome, " . ucfirst($_SESSION["username"]);?> <br> </h3>
 		<p class="headerbody">This is the homepage for Null Breaker's Reddit Social Media Aggregator.</p>
 	</div>
 </div>

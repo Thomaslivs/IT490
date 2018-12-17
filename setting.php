@@ -42,9 +42,9 @@ $user = $_SESSION["username"];
 		</div>
 	</div>
 	<div class="header tracking-in-expand-fwd-top" style="margin-bottom: 1em; width: 100%">
-		<h3 class="user-header">User Settings</h3>
-		<h2 class="user-header" style="margin-top: 1em">
-			<?php echo $user; ?>
+		<h3 class="user-header text-pop-up-top">User Settings</h3>
+		<h2 class="user-header text-pop-up-top" style="margin-top: 1em; font-size: 3em !important">
+			<?php echo ucfirst($user); ?>
 		</h2>
 
 	</div>

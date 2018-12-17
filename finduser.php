@@ -53,7 +53,7 @@ header('location: login.html');
 			</div>
 			<div class="slide-in-blurred-bottom">
 				<div class="fields">
-				<fieldset id="field2">
+				<fieldset id="field3">
 					<legend align="center">Find User</legend>
 					<form>
 						<label for="username"> Enter a Username to find if the user exists</label><br>

@@ -269,4 +269,7 @@ function make_graph() {
 	}
         }
     }
+    xhr.send(data);
+    xhr.timeout = 20000;
+    document.getElementById("output").innerHTML = "processing.....";
     };
