@@ -86,12 +86,12 @@ function key_threads() {
         if (this.readyState == 4 && this.status == 200) {
             response = this.responseText;
             endresult = JSON.parse(response);
-            var img = document.createElement("img");
-            img.src = endresult[(endresult.length) - 1];
-            img.width = 800;
-            img.height = 600;
-            img.alt = "Graph of Key Threads";
-            document.getElementById("output2").appendChild(img);
+	    var img = document.createElement("img");
+       	   img.src = endresult[(endresult.length) -1];
+           img.width = 800;
+           img.height = 600;
+           img.alt = "Graph of Key Threads";
+           document.getElementById("output2").appendChild(img);
             var bmlink = '<a href= "';
             var emlink = '">';
             var a = document.createElement('a');
@@ -141,12 +141,12 @@ function key_users() {
         if (this.readyState == 4 && this.status == 200) {
             response = this.responseText;
             endresult = JSON.parse(response);
-            var img = document.createElement("img");
-            img.src = endresult[(endresult.length) - 1];
-            img.width = 800;
-            img.height = 600;
-            img.alt = "Graph of Key Players";
-            document.getElementById("output").appendChild(img);
+		 var img = document.createElement("img");
+       	   img.src = endresult[(endresult.length) -1];
+           img.width = 800;
+           img.height = 600;
+           img.alt = "Graph of Key Players";
+           document.getElementById("output").appendChild(img);
             if (document.getElementById("players").innerHTML == "Loading....") {
                 document.getElementById("players").innerHTML = "";
                 for (var i = 0; i < endresult.length; i++) {
@@ -155,7 +155,8 @@ function key_users() {
                     if (i == endresult.length - 1) {
                         var link = '<a href="' + endresult[i] + '">' + endresult[i] + "</a>"
                         document.getElementById("players").innerHTML += endresult[i]; //add to body
-                    } else {
+                    }
+                    else {
                         document.getElementById("players").innerHTML += endresult[i]; //add to body
                     }
                 }
@@ -221,26 +222,26 @@ function start_campaign() {
 
 }
 
-function send_email() {
-    //debugger;
-    var xhr = new XMLHttpRequest();
-    var url = "RMQEmailNotif.php";
-    var email = document.getElementById("email").value;
-    var yn = document.getElementById("yn").value;
-    var user = user1;
-    var data = "user=" + user + "&email=" + email + "&yn=" + yn;
-    //document.getElementById("output3").innerHTML = "Email added: " + email + " to " + user + " as " + yn;
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            response = this.responseText;
-            endresult = JSON.parse(response);
-            document.getElementById("output3").innerHTML = "Email added: " + email + " to " + user + " as " + yn;
-        }
-    };
-    xhr.send(data);
-
+function send_email(){
+	//debugger;
+	var xhr = new XMLHttpRequest();
+	var url = "RMQEmailNotif.php";
+	var email = document.getElementById("email").value;
+	var yn = document.getElementById("yn").value;
+	var user = user1;
+	var data = "user="+user+"&email="+email+"&yn="+yn;
+	//document.getElementById("output3").innerHTML = "Email added: " + email + " to " + user + " as " + yn;
+	xhr.open("POST",url, true);
+	xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		xhr.onreadystatechange = function () {
+		if(this.readyState == 4 && this.status == 200){
+			response = this.responseText;
+			endresult = JSON.parse(response);
+			document.getElementById("output3").innerHTML = "Email added: " + email + " to " + user + " as " + yn;
+		}
+};
+	xhr.send(data);
+	
 }
 
 function make_graph() {
@@ -248,26 +249,27 @@ function make_graph() {
     var xhr = new XMLHttpRequest();
     var url = "RMQMake_Graph.php";
     var kc = document.getElementById("kc").value;
-    var data = "kc=" + kc + "&user=" + user1;
+    var data = "kc=" + kc + "&user="+user1;
     xhr.open("POST", url, true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             response = this.responseText;
             endresult = response;
-            if (endresult.length == 24 && endresult.includes("There")) {
-                document.getElementById("output2").innerHTML = endresult;
-            } else {
-                var img = document.createElement("img");
-                img.src = endresult;
-                img.width = 800;
-                img.height = 600;
-                img.alt = "Graph of Campaigns";
-                document.getElementById("output2").appendChild(img);
-            }
+	if (endresult.length == 24 && endresult.includes("There")){
+		document.getElementById("output2").innerHTML = endresult;
+	}
+	else {
+	   var img = document.createElement("img");
+       	   img.src = endresult;
+           img.width = 800;
+           img.height = 600;
+           img.alt = "Graph of Campaigns";
+           document.getElementById("output2").appendChild(img);
+	}
         }
     }
     xhr.send(data);
     xhr.timeout = 20000;
     document.getElementById("output").innerHTML = "processing.....";
-}
+    };
