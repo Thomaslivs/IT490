@@ -56,7 +56,7 @@ function comment_post() {
         if (this.readyState == 4 && this.status == 200) {
             response = this.responseText;
             endresult = JSON.parse(response);
-            document.getElementById("output2").innerHTML = "Comment Made: " + decodeURIComponent(comment) + data;
+            document.getElementById("output2").innerHTML = "Comment Made: " + decodeURIComponent(comment);
         }
     };
     xhr.send(data);
@@ -149,7 +149,7 @@ function key_users() {
            document.getElementById("output").appendChild(img);
             if (document.getElementById("players").innerHTML == "Loading....") {
                 document.getElementById("players").innerHTML = "";
-                for (var i = 0; i < endresult.length; i++) {
+                for (var i = 0; i < (endresult.length)-1; i++) {
                     var br = document.createElement('br'); //create link
                     document.getElementById("players").appendChild(br);
                     if (i == endresult.length - 1) {
@@ -228,7 +228,6 @@ function send_email(){
 	var url = "RMQEmailNotif.php";
 	var email = document.getElementById("email").value;
 	var yn = document.getElementById("yn").value;
-	var user = user1;
 	var data = "user="+user+"&email="+email+"&yn="+yn;
 	//document.getElementById("output3").innerHTML = "Email added: " + email + " to " + user + " as " + yn;
 	xhr.open("POST",url, true);
@@ -236,14 +235,32 @@ function send_email(){
 		xhr.onreadystatechange = function () {
 		if(this.readyState == 4 && this.status == 200){
 			response = this.responseText;
-			endresult = JSON.parse(response);
+			endresult = response;
 			document.getElementById("output3").innerHTML = "Email added: " + email + " to " + user + " as " + yn;
 		}
 };
 	xhr.send(data);
 	
 }
+function make_email(){
+	//debugger;
+	var xhr = new XMLHttpRequest();
+	var url = "RMQmakeemail.php";
+	var data = "user="+user;
+	//document.getElementById("output3").innerHTML = "Email added: " + email + " to " + user + " as " + yn;
+	xhr.open("POST",url, true);
+	document.getElementById("output4").innerHTML = "Email Sent";
+	xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+		xhr.onreadystatechange = function () {
+		if(this.readyState == 4 && this.status == 200){
+			response = this.responseText;
+			endresult = response;
+			document.getElementById("output4").innerHTML = endresult;
+		}
+};
+	xhr.send(data);
 
+}
 function make_graph() {
     //debugger;
     var xhr = new XMLHttpRequest();

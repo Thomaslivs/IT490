@@ -15,6 +15,7 @@ else{
 header('location: login.html');
 }
 ?>
+<script> var user = "<?php echo $user; ?>"</script>
 
 <body>
 	<script type="text/javascript" src="sidenav.js"></script>

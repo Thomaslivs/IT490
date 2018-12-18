@@ -46,7 +46,7 @@ $user = $_SESSION["username"];
 		<h2 class="user-header text-pop-up-top" style="margin-top: 1em; font-size: 3em !important">
 			<?php echo ucfirst($user); ?>
 		</h2>
-
+<script> var user = "<?php echo $user; ?>"</script>
 	</div>
 	<div class="slide-in-blurred-right" style="width: 100%;">
 		<!-- <div class="content-wrapper content-wrapper--settings">
@@ -85,6 +85,18 @@ $user = $_SESSION["username"];
 			</fieldset>
 			<div id="output3">
 			</div>
+			 <fieldset id="field" style="width: 25%">
+			<legend align="center">Receive Email Notifications</legend>
+			<form>
+					<button type="button" onclick='make_email();'>Test Email</button>
+			</div>
+			<br>
+			</form>
+			<center>
+			<div id="output4">
+			</div>
+			<center>
+			</fieldset>
 		</div>
 	</div>
 	</div>
